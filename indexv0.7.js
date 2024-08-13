@@ -5,6 +5,45 @@ function getQueryParam(param) {
 
 let sOppId = getQueryParam("sOppId");
 
+function initializeEditableFields(sOppId) {
+  const editableFields = document.querySelectorAll(".editable-link-container");
+
+  editableFields.forEach((container) => {
+    const inputField = container.querySelector(".editable-link-input");
+    const displayField = container.querySelector(".heading-21");
+    const editButton = container.querySelector("button");
+
+    // Set initial value in the display element
+    displayField.textContent = inputField.value || "";
+
+    // Handle input change
+    inputField.addEventListener("input", function () {
+      const value = inputField.value.trim();
+      displayField.textContent = value;
+      saveObservationRating(sOppId, inputField.name, value);
+    });
+
+    // Handle edit button click
+    editButton.addEventListener("click", function () {
+      inputField.style.display = "block"; // Show the input field
+      displayField.style.display = "none"; // Hide the display field
+      inputField.focus();
+    });
+
+    // Handle input blur to switch back to view mode
+    inputField.addEventListener("blur", function () {
+      inputField.style.display = "none"; // Hide the input field
+      displayField.style.display = "block"; // Show the display field
+    });
+
+    // Ensure the input field is hidden by default
+    inputField.style.display = "none";
+  });
+}
+
+// Example: Initialize all fields with a specific sOppId
+initializeEditableFields(sOppId);
+
 const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
