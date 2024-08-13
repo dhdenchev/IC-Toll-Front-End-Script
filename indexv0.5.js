@@ -7,32 +7,39 @@ let sOppId = getQueryParam("sOppId");
 
 //-------------------------TESTING-------------------------------------
 // Function to initialize all editable fields
-function initializeAllEditableFields(sOppId) {
-  // Get all elements with the class 'editable-field'
-  const editableFields = document.querySelectorAll(".editable-field");
+function initializeEditableFields(sOppId) {
+  const editableFields = document.querySelectorAll(".editable-link-container");
 
-  editableFields.forEach((field) => {
-    const fieldName = field.name;
+  editableFields.forEach((container) => {
+    const inputField = container.querySelector(".editable-link-input");
+    const displayField = container.querySelector(".heading-21");
+    const editButton = container.querySelector("button");
 
-    // Add event listener to each field for the 'input' event
-    field.addEventListener("input", function () {
-      const value = field.value.trim();
-      saveObservationRating(sOppId, fieldName, value);
+    // Set initial value in the display element
+    displayField.textContent = inputField.value || "";
+
+    // Handle input change
+    inputField.addEventListener("input", function () {
+      const value = inputField.value.trim();
+      displayField.textContent = value;
+      saveObservationRating(sOppId, inputField.name, value);
     });
 
-    // Optionally, handle the 'Edit' button for each field
-    const editButtonId = `editLinkButton${fieldName}`;
-    const editButton = document.getElementById(editButtonId);
+    // Handle edit button click
+    editButton.addEventListener("click", function () {
+      inputField.style.display = "block"; // Show the input field
+      displayField.style.display = "none"; // Hide the display field
+      inputField.focus();
+    });
 
-    if (editButton) {
-      editButton.addEventListener("click", function () {
-        field.removeAttribute("disabled"); // Enable editing
-        field.focus();
-      });
+    // Handle input blur to switch back to view mode
+    inputField.addEventListener("blur", function () {
+      inputField.style.display = "none"; // Hide the input field
+      displayField.style.display = "block"; // Show the display field
+    });
 
-      // Disable the field by default and only enable when 'Edit' is clicked
-      field.setAttribute("disabled", true);
-    }
+    // Ensure the input field is hidden by default
+    inputField.style.display = "none";
   });
 }
 
