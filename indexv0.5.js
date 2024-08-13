@@ -7,7 +7,7 @@ let sOppId = getQueryParam("sOppId");
 
 //-------------------------TESTING-------------------------------------
 // Function to initialize all editable fields
-function initializeEditableFields(sOppId) {
+function initializeAllEditableFields(sOppId) {
   const editableFields = document.querySelectorAll(".editable-link-container");
 
   editableFields.forEach((container) => {
