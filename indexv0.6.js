@@ -5,48 +5,6 @@ function getQueryParam(param) {
 
 let sOppId = getQueryParam("sOppId");
 
-//-------------------------TESTING-------------------------------------
-// Function to initialize all editable fields
-function initializeAllEditableFields(sOppId) {
-  const editableFields = document.querySelectorAll(".editable-link-container");
-
-  editableFields.forEach((container) => {
-    const inputField = container.querySelector(".editable-link-input");
-    const displayField = container.querySelector(".heading-21");
-    const editButton = container.querySelector("button");
-
-    // Set initial value in the display element
-    displayField.textContent = inputField.value || "";
-
-    // Handle input change
-    inputField.addEventListener("input", function () {
-      const value = inputField.value.trim();
-      displayField.textContent = value;
-      saveObservationRating(sOppId, inputField.name, value);
-    });
-
-    // Handle edit button click
-    editButton.addEventListener("click", function () {
-      inputField.style.display = "block"; // Show the input field
-      displayField.style.display = "none"; // Hide the display field
-      inputField.focus();
-    });
-
-    // Handle input blur to switch back to view mode
-    inputField.addEventListener("blur", function () {
-      inputField.style.display = "none"; // Hide the input field
-      displayField.style.display = "block"; // Show the display field
-    });
-
-    // Ensure the input field is hidden by default
-    inputField.style.display = "none";
-  });
-}
-
-initializeAllEditableFields(sOppId);
-
-//------------------------------------------------------------------------
-
 const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
@@ -73,7 +31,6 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     });
 };
 
-//Initialize Link fields
 function initializeEditableLinkField(
   fetchedLink,
   inputFieldId,
@@ -595,29 +552,6 @@ document.addEventListener("DOMContentLoaded", function () {
             //
             document.getElementById("indicativeOfferShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
-            //Gross Flip Margin
-            document.getElementById("grossFlipMarginShouldWeBuy").textContent =
-              resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
-            //Net Flip Margin
-            document.getElementById("netFlipMarginShouldWeBuy").textContent =
-              resultObj.creatorRecord[0].Net_Flip_Margin || "-";
-            //Net Profit
-            document.getElementById("netProfitShouldWeBuy").textContent =
-              "£ " + formatNumber(resultObj.creatorRecord[0].Net_Profit) || "-";
-            //
-            //Profit Share Details
-            document.getElementById(
-              "UW_Observation_Should_We_Buy_Profit_Share_Details"
-            ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Profit_Share_Details || "";
-            //
-            //Profit Share Details
-            document.getElementById(
-              "UW_Observation_Should_We_Buy_Disposal_Strategy"
-            ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Disposal_Strategy || "";
             //
             //Update Should we buy decision
 
