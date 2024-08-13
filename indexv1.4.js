@@ -31,45 +31,52 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     });
 };
 
-function initializeEditableFields(sOppId) {
-  // Select all editable link containers
-  const editableFields = document.querySelectorAll(".editable-link-container");
+// Function to handle the editing of a single field
+function initializeEditableField(container) {
+  const inputField = container.querySelector("input.editable-field");
+  const displayField = container.querySelector("h3.heading-21");
+  const editButton = container.querySelector("button");
 
-  editableFields.forEach((container) => {
-    // Get elements for the current container
-    const inputField = container.querySelector("input.editable-link-input");
-    const displayField = container.querySelector("h3.heading-21");
-    const editButton = container.querySelector("button");
+  // Show input field and hide display field when "Edit" is clicked
+  editButton.addEventListener("click", function () {
+    console.log("Edit button clicked for:", inputField.id);
+    inputField.style.display = "block"; // Show input field
+    displayField.style.display = "none"; // Hide display field
+    inputField.focus(); // Focus on input field
+  });
 
-    // Initialize display field with input value
-    displayField.textContent = inputField.value.trim() || "";
+  // Hide input field and show display field on blur
+  inputField.addEventListener("blur", function () {
+    const newValue = inputField.value.trim();
+    console.log("Input blurred, new value:", newValue);
+    displayField.textContent = newValue; // Update display field
+    inputField.style.display = "none"; // Hide input field
+    displayField.style.display = "block"; // Show display field
+    // Save the updated value
+    saveObservationRating("your-sOppId", inputField.name, newValue); // Replace "your-sOppId" with actual ID
+  });
 
-    // Show the input field and hide the display field when "Edit" is clicked
-    editButton.addEventListener("click", function () {
-      inputField.style.display = "block"; // Show input field
-      displayField.style.display = "none"; // Hide display field
-      inputField.focus(); // Focus on input field
-    });
+  // Update display field on input change
+  inputField.addEventListener("input", function () {
+    const newValue = inputField.value.trim();
+    console.log("Input changed, new value:", newValue);
+    displayField.textContent = newValue; // Update display field
+  });
 
-    // Hide the input field and show the display field on blur
-    inputField.addEventListener("blur", function () {
-      const newValue = inputField.value.trim();
-      displayField.textContent = newValue; // Update display field
-      inputField.style.display = "none"; // Hide input field
-      displayField.style.display = "block"; // Show display field
-      // Save the updated value
-      saveObservationRating(sOppId, inputField.name, newValue);
-    });
+  // Initialize display field with the input field's current value
+  displayField.textContent = inputField.value.trim() || "";
 
-    // Save the updated value on input change
-    inputField.addEventListener("input", function () {
-      const newValue = inputField.value.trim();
-      displayField.textContent = newValue; // Update display field
-    });
+  // Initially hide the input field and show the display field
+  inputField.style.display = "none";
+  displayField.style.display = "block";
+}
 
-    // Initially hide the input field and show the display field
-    inputField.style.display = "none";
-    displayField.style.display = "block";
+// Function to initialize all editable fields
+function initializeAllEditableFields() {
+  const editableContainers = document.querySelectorAll(".editable-field");
+
+  editableContainers.forEach((container) => {
+    initializeEditableField(container);
   });
 }
 
