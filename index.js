@@ -1,4 +1,3 @@
-<script>
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
@@ -1219,5 +1218,3 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeTextAreas();
   }, 10000); // 10 seconds
 });
-
-</script>
