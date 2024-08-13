@@ -32,39 +32,44 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
 };
 
 function initializeEditableFields(sOppId) {
+  // Select all editable link containers
   const editableFields = document.querySelectorAll(".editable-link-container");
 
   editableFields.forEach((container) => {
-    const inputField = container.querySelector(".editable-link-input");
-    const displayField = container.querySelector(".heading-21");
+    // Get elements for the current container
+    const inputField = container.querySelector("input.editable-link-input");
+    const displayField = container.querySelector("h3.heading-21");
     const editButton = container.querySelector("button");
 
     // Initialize display field with input value
-    displayField.textContent = inputField.value || "";
+    displayField.textContent = inputField.value.trim() || "";
 
-    // Handle the edit button click
+    // Show the input field and hide the display field when "Edit" is clicked
     editButton.addEventListener("click", function () {
-      inputField.style.display = "block"; // Show the input field
-      displayField.style.display = "none"; // Hide the display field
-      inputField.focus();
+      inputField.style.display = "block"; // Show input field
+      displayField.style.display = "none"; // Hide display field
+      inputField.focus(); // Focus on input field
     });
 
-    // Handle input blur to switch back to view mode
+    // Hide the input field and show the display field on blur
     inputField.addEventListener("blur", function () {
-      displayField.textContent = inputField.value.trim(); // Update display field
-      inputField.style.display = "none"; // Hide the input field
-      displayField.style.display = "block"; // Show the display field
+      const newValue = inputField.value.trim();
+      displayField.textContent = newValue; // Update display field
+      inputField.style.display = "none"; // Hide input field
+      displayField.style.display = "block"; // Show display field
+      // Save the updated value
+      saveObservationRating(sOppId, inputField.name, newValue);
     });
 
-    // Handle input change
+    // Save the updated value on input change
     inputField.addEventListener("input", function () {
-      const value = inputField.value.trim();
-      displayField.textContent = value;
-      saveObservationRating(sOppId, inputField.name, value);
+      const newValue = inputField.value.trim();
+      displayField.textContent = newValue; // Update display field
     });
 
-    // Ensure the input field is hidden initially
+    // Initially hide the input field and show the display field
     inputField.style.display = "none";
+    displayField.style.display = "block";
   });
 }
 
