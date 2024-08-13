@@ -5,6 +5,32 @@ function getQueryParam(param) {
 
 let sOppId = getQueryParam("sOppId");
 
+const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
+  // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
+  valueOfFieldToUpdate =
+    valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
+  const apiUrl = "http://localhost:3000/api/updateRecordDetails";
+
+  fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sOppId: sOppId,
+      fieldToUpdate: fieldToUpdate,
+      valueOfFieldToUpdate: valueOfFieldToUpdate,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
 function initializeEditableFields(sOppId) {
   const editableFields = document.querySelectorAll(".editable-link-container");
 
@@ -40,35 +66,6 @@ function initializeEditableFields(sOppId) {
     inputField.style.display = "none";
   });
 }
-
-// Example: Initialize all fields with a specific sOppId
-initializeEditableFields(sOppId);
-
-const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
-  // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
-  valueOfFieldToUpdate =
-    valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
-  const apiUrl = "http://localhost:3000/api/updateRecordDetails";
-
-  fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      sOppId: sOppId,
-      fieldToUpdate: fieldToUpdate,
-      valueOfFieldToUpdate: valueOfFieldToUpdate,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
 
 function initializeEditableLinkField(
   fetchedLink,
@@ -1067,6 +1064,7 @@ document.addEventListener("DOMContentLoaded", function () {
               "editableLinkGoogleStreetViewLink",
               "editLinkButtonGoogleStreetViewLink"
             );
+
             //------------------------------------------------------------------------------------------------------------
             // Update Tableau viz-parameter elements
             updateVizParameters("select_uprn", resultObj.uprn || "N/A");
