@@ -554,10 +554,10 @@ document.addEventListener("DOMContentLoaded", function () {
               "£" + formatNumber(resultObj.uwOffer) || "-";
             //Gross Flip Margin
             document.getElementById("grossFlipMarginShouldWeBuy").textContent =
-              "% " + resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
+              resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
             //Net Flip Margin
-            document.getElementById("Net_Flip_Margin").textContent =
-              "% " + resultObj.creatorRecord[0].Net_Flip_Margin || "-";
+            document.getElementById("netFlipMarginShouldWeBuy").textContent =
+              resultObj.creatorRecord[0].Net_Flip_Margin || "-";
             //Net Profit
             document.getElementById("netProfitShouldWeBuy").textContent =
               "£ " + formatNumber(resultObj.creatorRecord[0].Net_Profit) || "-";
