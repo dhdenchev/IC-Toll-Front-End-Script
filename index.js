@@ -552,6 +552,29 @@ document.addEventListener("DOMContentLoaded", function () {
             //
             document.getElementById("indicativeOfferShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
+            //Gross Flip Margin
+            document.getElementById("grossFlipMarginShouldWeBuy").textContent =
+              "% " + resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
+            //Net Flip Margin
+            document.getElementById("Net_Flip_Margin").textContent =
+              "% " + resultObj.creatorRecord[0].Net_Flip_Margin || "-";
+            //Net Profit
+            document.getElementById("netProfitShouldWeBuy").textContent =
+              "£ " + formatNumber(resultObj.creatorRecord[0].Net_Profit) || "-";
+            //
+            //Profit Share Details
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Profit_Share_Details"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Profit_Share_Details || "";
+            //
+            //Profit Share Details
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Disposal_Strategy"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Disposal_Strategy || "";
             //
             //Update Should we buy decision
 
