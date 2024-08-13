@@ -31,6 +31,87 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     });
 };
 
+// Function to make URLs within a text clickable by wrapping them in <a> tags
+function makeLinksClickable(text) {
+  console.log("makeLinksClickable called!");
+  const urlPattern = /(https?:\/\/[^\s]+)/g; // Regular expression to match URLs
+  return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+}
+
+// Function to initialize each editable text field
+function initializeEditableTextField(
+  fetchedText,
+  inputFieldId,
+  textDisplayId,
+  textFieldId,
+  editButtonId
+) {
+  const inputField = document.getElementById(inputFieldId);
+  const textDisplay = document.getElementById(textDisplayId);
+  const textField = document.getElementById(textFieldId);
+  const editButton = document.getElementById(editButtonId);
+
+  // Set initial value from fetched text
+  inputField.value = fetchedText;
+  textField.innerHTML = makeLinksClickable(fetchedText); // Make links clickable
+
+  // Handle input change
+  inputField.addEventListener("input", function () {
+    const newText = inputField.value.trim();
+    textField.innerHTML = makeLinksClickable(newText); // Update and make links clickable
+  });
+
+  // Handle click to toggle between view and edit modes
+  editButton.addEventListener("click", function () {
+    textDisplay.style.display = "none";
+    inputField.style.display = "block";
+    inputField.focus();
+  });
+
+  // Blur input field to switch back to view mode
+  inputField.addEventListener("blur", function () {
+    textDisplay.style.display = "block";
+    inputField.style.display = "none";
+
+    // Save the updated text when leaving the input
+    const sOppId = "your_sOppId"; // Replace with actual sOppId
+    const fieldToUpdate = inputField.name;
+    const valueOfFieldToUpdate = inputField.value.trim();
+    saveObservationRating(sOppId, fieldToUpdate, valueOfFieldToUpdate);
+  });
+
+  // Initially show the text and hide the input field
+  textDisplay.style.display = "block";
+  inputField.style.display = "none";
+}
+
+// Function to initialize all editable fields
+function initializeAllEditableFields() {
+  const editableFields = document.querySelectorAll(".editable-text-container");
+
+  editableFields.forEach((container, index) => {
+    const inputField = container.querySelector(".editable-text-input");
+    const textDisplay = container.querySelector(".text-display");
+    const textField = textDisplay.querySelector("p");
+    const editButton = textDisplay.querySelector("button");
+
+    const fetchedText = inputField.value || ""; // Use the current value or a default empty string
+    const inputFieldId = inputField.id;
+    const textDisplayId = textDisplay.id;
+    const textFieldId = textField.id;
+    const editButtonId = editButton.id;
+
+    initializeEditableTextField(
+      fetchedText,
+      inputFieldId,
+      textDisplayId,
+      textFieldId,
+      editButtonId
+    );
+  });
+}
+
+//Initialize Link fields
 function initializeEditableLinkField(
   fetchedLink,
   inputFieldId,
@@ -1239,5 +1320,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize text areas
     initializeTextAreas();
+    initializeAllEditableFields();
   }, 10000); // 10 seconds
 });
