@@ -39,17 +39,10 @@ function initializeEditableFields(sOppId) {
     const displayField = container.querySelector(".heading-21");
     const editButton = container.querySelector("button");
 
-    // Set initial value in the display element
+    // Initialize display field with input value
     displayField.textContent = inputField.value || "";
 
-    // Handle input change
-    inputField.addEventListener("input", function () {
-      const value = inputField.value.trim();
-      displayField.textContent = value;
-      saveObservationRating(sOppId, inputField.name, value);
-    });
-
-    // Handle edit button click
+    // Handle the edit button click
     editButton.addEventListener("click", function () {
       inputField.style.display = "block"; // Show the input field
       displayField.style.display = "none"; // Hide the display field
@@ -58,11 +51,19 @@ function initializeEditableFields(sOppId) {
 
     // Handle input blur to switch back to view mode
     inputField.addEventListener("blur", function () {
+      displayField.textContent = inputField.value.trim(); // Update display field
       inputField.style.display = "none"; // Hide the input field
       displayField.style.display = "block"; // Show the display field
     });
 
-    // Ensure the input field is hidden by default
+    // Handle input change
+    inputField.addEventListener("input", function () {
+      const value = inputField.value.trim();
+      displayField.textContent = value;
+      saveObservationRating(sOppId, inputField.name, value);
+    });
+
+    // Ensure the input field is hidden initially
     inputField.style.display = "none";
   });
 }
