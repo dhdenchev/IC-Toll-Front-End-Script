@@ -5,6 +5,41 @@ function getQueryParam(param) {
 
 let sOppId = getQueryParam("sOppId");
 
+//-------------------------TESTING-------------------------------------
+// Function to initialize all editable fields
+function initializeAllEditableFields(sOppId) {
+  // Get all elements with the class 'editable-field'
+  const editableFields = document.querySelectorAll(".editable-field");
+
+  editableFields.forEach((field) => {
+    const fieldName = field.name;
+
+    // Add event listener to each field for the 'input' event
+    field.addEventListener("input", function () {
+      const value = field.value.trim();
+      saveObservationRating(sOppId, fieldName, value);
+    });
+
+    // Optionally, handle the 'Edit' button for each field
+    const editButtonId = `editLinkButton${fieldName}`;
+    const editButton = document.getElementById(editButtonId);
+
+    if (editButton) {
+      editButton.addEventListener("click", function () {
+        field.removeAttribute("disabled"); // Enable editing
+        field.focus();
+      });
+
+      // Disable the field by default and only enable when 'Edit' is clicked
+      field.setAttribute("disabled", true);
+    }
+  });
+}
+
+initializeAllEditableFields(sOppId);
+
+//------------------------------------------------------------------------
+
 const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
@@ -30,86 +65,6 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
       console.error("Error:", error);
     });
 };
-
-// Function to make URLs within a text clickable by wrapping them in <a> tags
-function makeLinksClickable(text) {
-  console.log("makeLinksClickable called!");
-  const urlPattern = /(https?:\/\/[^\s]+)/g; // Regular expression to match URLs
-  return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
-}
-
-// Function to initialize each editable text field
-function initializeEditableTextField(
-  fetchedText,
-  inputFieldId,
-  textDisplayId,
-  textFieldId,
-  editButtonId
-) {
-  const inputField = document.getElementById(inputFieldId);
-  const textDisplay = document.getElementById(textDisplayId);
-  const textField = document.getElementById(textFieldId);
-  const editButton = document.getElementById(editButtonId);
-
-  // Set initial value from fetched text
-  inputField.value = fetchedText;
-  textField.innerHTML = makeLinksClickable(fetchedText); // Make links clickable
-
-  // Handle input change
-  inputField.addEventListener("input", function () {
-    const newText = inputField.value.trim();
-    textField.innerHTML = makeLinksClickable(newText); // Update and make links clickable
-  });
-
-  // Handle click to toggle between view and edit modes
-  editButton.addEventListener("click", function () {
-    textDisplay.style.display = "none";
-    inputField.style.display = "block";
-    inputField.focus();
-  });
-
-  // Blur input field to switch back to view mode
-  inputField.addEventListener("blur", function () {
-    textDisplay.style.display = "block";
-    inputField.style.display = "none";
-
-    // Save the updated text when leaving the input
-    const sOppId = "your_sOppId"; // Replace with actual sOppId
-    const fieldToUpdate = inputField.name;
-    const valueOfFieldToUpdate = inputField.value.trim();
-    saveObservationRating(sOppId, fieldToUpdate, valueOfFieldToUpdate);
-  });
-
-  // Initially show the text and hide the input field
-  textDisplay.style.display = "block";
-  inputField.style.display = "none";
-}
-
-// Function to initialize all editable fields
-function initializeAllEditableFields() {
-  const editableFields = document.querySelectorAll(".editable-text-container");
-
-  editableFields.forEach((container, index) => {
-    const inputField = container.querySelector(".editable-text-input");
-    const textDisplay = container.querySelector(".text-display");
-    const textField = textDisplay.querySelector("p");
-    const editButton = textDisplay.querySelector("button");
-
-    const fetchedText = inputField.value || ""; // Use the current value or a default empty string
-    const inputFieldId = inputField.id;
-    const textDisplayId = textDisplay.id;
-    const textFieldId = textField.id;
-    const editButtonId = editButton.id;
-
-    initializeEditableTextField(
-      fetchedText,
-      inputFieldId,
-      textDisplayId,
-      textFieldId,
-      editButtonId
-    );
-  });
-}
 
 //Initialize Link fields
 function initializeEditableLinkField(
@@ -1320,6 +1275,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize text areas
     initializeTextAreas();
-    initializeAllEditableFields();
   }, 10000); // 10 seconds
 });
