@@ -598,6 +598,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].Should_We_Buy_Answer
               );
             }
+            document.getElementById("editableLinkGrossFlipMargin").textContent =
+              resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
