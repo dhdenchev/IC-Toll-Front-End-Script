@@ -563,6 +563,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].Should_We_Buy_Answer
               );
             }
+            //Approved By
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Approved_By"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Approved_By || "-";
+            //
             //Gross Flip Margin
             document.getElementById(
               "UW_Observation_Should_We_Buy_Gross_Flip_Margin"
