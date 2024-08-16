@@ -614,8 +614,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].Should_We_Buy_Answer
               );
             }
-            document.getElementById("editableLinkGrossFlipMargin").textContent =
-              resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Gross_Flip_Margin"
+            ).textContent = resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
