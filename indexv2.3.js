@@ -566,9 +566,8 @@ document.addEventListener("DOMContentLoaded", function () {
             //Approved By
             document.getElementById(
               "UW_Observation_Should_We_Buy_Approved_By"
-            ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Approved_By || "-";
+            ).textContent = resultObj.creatorRecord[0];
+            Approved_By || "-";
             //
             //Gross Flip Margin
             document.getElementById(
