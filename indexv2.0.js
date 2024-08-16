@@ -578,6 +578,16 @@ document.addEventListener("DOMContentLoaded", function () {
               "UW_Observation_Should_We_Buy_Net_Profit"
             ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
             //
+            //Profit Share Details
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Profit_Share_Details"
+            ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
+            //
+            //Disposal Strategy
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Disposal_Strategy"
+            ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
