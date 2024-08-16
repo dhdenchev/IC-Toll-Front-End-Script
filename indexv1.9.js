@@ -31,56 +31,6 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     });
 };
 
-// Function to handle the editing of a single field
-
-// // Function to initialize all editable fields
-// function initializeAllEditableFields() {
-//   // Function to initialize all editable fields
-//   function initializeAllEditableFields() {
-//     // Select all containers with the editable class
-//     const containers = document.querySelectorAll(".editable-link-container");
-
-//     containers.forEach((container) => {
-//       // Get the elements within the current container
-//       const inputField = container.querySelector(".editable-field");
-//       const displayField = container.querySelector(".editable-display");
-//       const editButton = container.querySelector(".edit-button");
-
-//       // Show input field and hide display field when "Edit" is clicked
-//       editButton.addEventListener("click", function () {
-//         inputField.style.display = "block"; // Show input field
-//         displayField.style.display = "none"; // Hide display field
-//         inputField.focus(); // Focus on input field
-//       });
-
-//       // Hide input field and show display field on blur
-//       inputField.addEventListener("blur", function () {
-//         const newValue = inputField.value.trim();
-//         displayField.textContent = newValue; // Update display field
-//         inputField.style.display = "none"; // Hide input field
-//         displayField.style.display = "block"; // Show display field
-//         // Save the updated value
-//         const fieldToUpdate = inputField.name; // Use the name attribute for the field to update
-//         const sOppId = "your-sOppId"; // Replace with your actual sOppId
-//         saveObservationRating(sOppId, fieldToUpdate, newValue);
-//       });
-
-//       // Initialize display field with the input field's current value
-//       displayField.textContent = inputField.value.trim() || "";
-
-//       // Initially hide the input field and show the display field
-//       inputField.style.display = "none";
-//       displayField.style.display = "block";
-//     });
-//   }
-
-//   const editableContainers = document.querySelectorAll(".editable-field");
-
-//   editableContainers.forEach((container) => {
-//     initializeEditableField(container);
-//   });
-// }
-
 function initializeEditableLinkField(
   fetchedLink,
   inputFieldId,
@@ -263,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Initialize all editable fields on page load
-    // initializeAllEditableFields();
 
     elements.forEach(function (item) {
       item.addEventListener("click", function () {
@@ -614,9 +563,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].Should_We_Buy_Answer
               );
             }
+            //Gross Flip Margin
             document.getElementById(
               "UW_Observation_Should_We_Buy_Gross_Flip_Margin"
             ).textContent = resultObj.creatorRecord[0].Gross_Flip_Margin || "-";
+            //
+            //Net Flip Margin
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Net_Flip_Margin"
+            ).textContent = resultObj.creatorRecord[0].Net_Flip_Margin || "-";
+            //
+            //Net Profit
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Net_Profit"
+            ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
@@ -1084,7 +1045,6 @@ document.addEventListener("DOMContentLoaded", function () {
               "editableLinkGoogleStreetViewLink",
               "editLinkButtonGoogleStreetViewLink"
             );
-            // initializeEditableFields(sOppId);
 
             //------------------------------------------------------------------------------------------------------------
             // Update Tableau viz-parameter elements
