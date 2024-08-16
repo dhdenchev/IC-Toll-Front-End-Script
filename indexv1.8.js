@@ -1084,7 +1084,7 @@ document.addEventListener("DOMContentLoaded", function () {
               "editableLinkGoogleStreetViewLink",
               "editLinkButtonGoogleStreetViewLink"
             );
-            initializeEditableFields(sOppId);
+            // initializeEditableFields(sOppId);
 
             //------------------------------------------------------------------------------------------------------------
             // Update Tableau viz-parameter elements
