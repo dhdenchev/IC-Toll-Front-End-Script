@@ -552,8 +552,12 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("uwValuationShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwValuation) || "-";
             //
-            document.getElementById("indicativeOfferShouldWeBuy").textContent =
+            document.getElementById("uwOfferShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
+            //
+            //
+            document.getElementById("indicativeOfferShouldWeBuy").textContent =
+              "£" + formatNumber(resultObj.indicativeOffer) || "-";
             //
             //Update Should we buy decision
 
