@@ -607,10 +607,10 @@ document.addEventListener("DOMContentLoaded", function () {
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
             //General Answered Questions/ Questions Count & Overall Rating
-            document.getElementById("conditionAnsweredQuestions").value =
+            document.getElementById("conditionAnsweredQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionAnsweredQuestions || "";
-            document.getElementById("conditionTotalQuestions").value =
+            document.getElementById("conditionTotalQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionTotalQuestions || "";
 
