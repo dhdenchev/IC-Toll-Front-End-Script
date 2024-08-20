@@ -11,17 +11,18 @@ function fillStars(wrapperId, rating) {
 
   stars.forEach((star, index) => {
     if (index < Math.floor(rating)) {
-      star.classList.add("filled");
-      star.classList.remove("partial");
-      star.style.setProperty("--partial-width", "100%");
+      star.style.color = "#90ee90"; // Fully filled star
+      star.style.background = "none"; // Clear any partial backgrounds
     } else if (index === Math.floor(rating)) {
       const decimalPart = rating - Math.floor(rating);
-      star.classList.add("partial");
-      star.classList.remove("filled");
-      star.style.setProperty("--partial-width", `${decimalPart * 100}%`);
+      star.style.background = `linear-gradient(to right, #90ee90 ${
+        decimalPart * 100
+      }%, white ${decimalPart * 100}%)`;
+      star.style.webkitBackgroundClip = "text"; // Ensure proper text clipping in webkit browsers
+      star.style.webkitTextFillColor = "transparent"; // Prevent text color from showing behind the gradient
     } else {
-      star.classList.remove("filled", "partial");
-      star.style.setProperty("--partial-width", "0");
+      star.style.color = "white"; // Empty star
+      star.style.background = "none"; // Clear any partial backgrounds
     }
   });
 }
