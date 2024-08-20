@@ -1217,31 +1217,34 @@ document.addEventListener("DOMContentLoaded", function () {
       let ratingValue = initialRating;
       const stars = container.querySelectorAll(".star");
 
-      updateStarColors(container, ratingValue);
+      updateStarColors(ratingValue);
 
       stars.forEach((star) => {
         star.addEventListener("click", function () {
           ratingValue = this.getAttribute("data-value");
-          updateStarColors(container, ratingValue);
+          updateStarColors(ratingValue);
           console.log(
             `Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
           );
           saveObservationRating(sOppId, container.dataset.rating, ratingValue);
         });
         star.addEventListener("mouseover", function () {
-          updateStarColors(container, this.getAttribute("data-value"));
+          updateStarColors(this.getAttribute("data-value"));
         });
         star.addEventListener("mouseout", function () {
-          updateStarColors(container, ratingValue);
+          updateStarColors(ratingValue);
         });
       });
 
-      function updateStarColors(container, rating) {
+      function updateStarColors(rating) {
         stars.forEach((star) => {
-          if (star.getAttribute("data-value") <= rating) {
+          const starValue = star.getAttribute("data-value");
+          if (starValue <= rating) {
             star.classList.add("green");
+            star.classList.remove("red");
           } else {
             star.classList.remove("green");
+            star.classList.remove("red");
           }
         });
       }
@@ -1293,43 +1296,41 @@ document.addEventListener("DOMContentLoaded", function () {
       let ratingValue = initialRating;
       const stars = container.querySelectorAll(".star");
 
-      updateRiskStarColors(container, ratingValue);
+      updateRiskStarColors(ratingValue);
 
       stars.forEach((star) => {
         star.addEventListener("click", function () {
           ratingValue = this.getAttribute("data-value");
-          updateRiskStarColors(container, ratingValue);
+          updateRiskStarColors(ratingValue);
           console.log(
             `Risk Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
           );
           saveObservationRating(sOppId, container.dataset.rating, ratingValue);
         });
         star.addEventListener("mouseover", function () {
-          updateRiskStarColors(container, this.getAttribute("data-value"));
+          updateRiskStarColors(this.getAttribute("data-value"));
         });
         star.addEventListener("mouseout", function () {
-          updateRiskStarColors(container, ratingValue);
+          updateRiskStarColors(ratingValue);
         });
       });
 
-      function updateRiskStarColors(container, rating) {
+      function updateRiskStarColors(rating) {
         stars.forEach((star) => {
-          if (star.getAttribute("data-value") <= rating) {
-            star.classList.add("green");
-            star.classList.remove("red");
+          const starValue = star.getAttribute("data-value");
+          if (starValue <= rating) {
+            if (rating <= 2) {
+              star.classList.add("green");
+              star.classList.remove("red");
+            } else {
+              star.classList.add("red");
+              star.classList.remove("green");
+            }
           } else {
             star.classList.remove("green");
             star.classList.remove("red");
           }
         });
-
-        if (rating <= 2) {
-          container.classList.add("green");
-          container.classList.remove("red");
-        } else {
-          container.classList.add("red");
-          container.classList.remove("green");
-        }
       }
     }
 
