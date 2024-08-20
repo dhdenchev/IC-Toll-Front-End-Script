@@ -1211,7 +1211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //   }
     // }
 
-    // This function initializes the general star ratings
+    // Function to handle general star rating
     function initializeStarRating(container) {
       const initialRating = container.getAttribute("data-initial-rating") || 0;
       let ratingValue = initialRating;
@@ -1247,7 +1247,47 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // This function initializes the star ratings for risks and changes colors based on rating
+    //This functionality is for the RISKS module, changing colours
+    // function initializeRiskStarRating(container) {
+    //   const initialRating = container.getAttribute("data-initial-rating") || 0;
+    //   let ratingValue = initialRating;
+    //   const stars = container.querySelectorAll(".star");
+
+    //   // Update the stars based on the initial rating
+    //   updateRiskStarColors(container, ratingValue);
+
+    //   stars.forEach((star) => {
+    //     star.addEventListener("click", function () {
+    //       ratingValue = this.getAttribute("data-value");
+    //       updateRiskStarColors(container, ratingValue);
+    //       console.log(
+    //         `Risk Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
+    //       );
+    //       // Save the rating value to the server using an API
+    //       saveObservationRating(sOppId, container.dataset.rating, ratingValue);
+    //     });
+    //     star.addEventListener("mouseover", function () {
+    //       updateRiskStarColors(container, this.getAttribute("data-value"));
+    //     });
+    //     star.addEventListener("mouseout", function () {
+    //       updateRiskStarColors(container, ratingValue);
+    //     });
+    //   });
+
+    //   function updateRiskStarColors(container, rating) {
+    //     stars.forEach((star) => {
+    //       if (rating <= 2) {
+    //         container.classList.add("green");
+    //         container.classList.remove("red");
+    //       } else {
+    //         container.classList.add("red");
+    //         container.classList.remove("green");
+    //       }
+    //     });
+    //   }
+    // }
+
+    // Function to handle risk-specific star rating
     function initializeRiskStarRating(container) {
       const initialRating = container.getAttribute("data-initial-rating") || 0;
       let ratingValue = initialRating;
@@ -1273,15 +1313,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       function updateRiskStarColors(container, rating) {
-        stars.forEach((star) => {
-          if (rating <= 2) {
-            container.classList.add("green");
-            container.classList.remove("red");
-          } else {
-            container.classList.add("red");
-            container.classList.remove("green");
-          }
-        });
+        if (rating <= 2) {
+          container.classList.add("green");
+          container.classList.remove("red");
+        } else {
+          container.classList.add("red");
+          container.classList.remove("green");
+        }
       }
     }
 
@@ -1306,19 +1344,26 @@ document.addEventListener("DOMContentLoaded", function () {
       saveObservationRating(sOppId, textAreaName, observationNo);
     });
     //----------------------------------------------------------------------------
-    // Initialize star rating for containers that are NOT risks
-    document
-      .querySelectorAll(".rating-container:not(.risks)")
-      .forEach((container) => {
-        initializeStarRating(container);
-      });
+    // // Initialize star rating for each rating container
+    // document.querySelectorAll(".rating-container").forEach((container) => {
+    //   initializeStarRating(container);
+    // });
 
-    // Initialize star rating for risk containers
-    document
-      .querySelectorAll(".rating-container.risks")
-      .forEach((container) => {
-        initializeRiskStarRating(container);
-      });
+    // // Initialize the risk star ratings for all containers with the "risks" class
+    // document.querySelectorAll(".rating-container.risks");
+    // riskContainers.forEach((container) => {
+    //   initializeRiskStarRating(container);
+    // });
+
+    // Initialize general star ratings
+    document.querySelectorAll(".rating-container").forEach((container) => {
+      initializeStarRating(container);
+    });
+
+    // Initialize risk-specific star ratings
+    document.querySelectorAll(".risk-rating-container").forEach((container) => {
+      initializeRiskStarRating(container);
+    });
 
     // Function to initialize text areas
     function initializeTextAreas() {
