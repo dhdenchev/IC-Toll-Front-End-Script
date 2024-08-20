@@ -607,6 +607,11 @@ document.addEventListener("DOMContentLoaded", function () {
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
             //General Answered Questions/ Questions Count & Overall Rating
+            console.log(
+              "ConditionModuleAnsweredQuestions: ",
+              resultObj.creatorRecord[0].conditionModuleRating
+                .conditionAnsweredQuestions
+            );
             document.getElementById("conditionAnsweredQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionAnsweredQuestions || "";
