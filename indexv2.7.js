@@ -498,6 +498,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update the HTML elements with formatted values
             document.getElementById("propertyAddress").textContent =
               resultObj.street || "-";
+            document.getElementById("propertyPostcode").textContent =
+              resultObj.propertyPostcode || "-";
             document.getElementById("propertyType").textContent =
               resultObj.propertyType || "-";
             document.getElementById("propertyStyle").textContent =
