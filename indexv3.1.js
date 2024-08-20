@@ -1313,6 +1313,16 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       function updateRiskStarColors(container, rating) {
+        stars.forEach((star) => {
+          if (star.getAttribute("data-value") <= rating) {
+            star.classList.add("green");
+            star.classList.remove("red");
+          } else {
+            star.classList.remove("green");
+            star.classList.remove("red");
+          }
+        });
+
         if (rating <= 2) {
           container.classList.add("green");
           container.classList.remove("red");
