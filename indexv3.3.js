@@ -610,7 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("conditionAnsweredQuestions").value =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionAnsweredQuestions || "";
-            document.getElementById("conditionAnsweredQuestions").value =
+            document.getElementById("conditionTotalQuestions").value =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionTotalQuestions || "";
 
