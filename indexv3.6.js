@@ -1,3 +1,31 @@
+function fillStars(wrapperId, rating) {
+  const starsWrapper = document.getElementById(wrapperId);
+
+  // Ensure the stars wrapper exists
+  if (!starsWrapper) {
+    console.error(`Element with ID '${wrapperId}' not found.`);
+    return;
+  }
+
+  const stars = starsWrapper.querySelectorAll(".star");
+
+  stars.forEach((star, index) => {
+    if (index < Math.floor(rating)) {
+      star.classList.add("filled");
+      star.classList.remove("partial");
+      star.style.setProperty("--partial-width", "100%");
+    } else if (index === Math.floor(rating)) {
+      const decimalPart = rating - Math.floor(rating);
+      star.classList.add("partial");
+      star.classList.remove("filled");
+      star.style.setProperty("--partial-width", `${decimalPart * 100}%`);
+    } else {
+      star.classList.remove("filled", "partial");
+      star.style.setProperty("--partial-width", "0");
+    }
+  });
+}
+
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
@@ -607,17 +635,25 @@ document.addEventListener("DOMContentLoaded", function () {
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
             //General Answered Questions/ Questions Count & Overall Rating
-            console.log(
-              "ConditionModuleAnsweredQuestions: ",
-              resultObj.creatorRecord[0].conditionModuleRating
-                .conditionAnsweredQuestions
-            );
+
             document.getElementById("conditionAnsweredQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionAnsweredQuestions || "";
             document.getElementById("conditionTotalQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionTotalQuestions || "";
+
+            //FILL AVERAGE STARS RATING
+            if (
+              resultObj.creatorRecord[0].conditionModuleRating
+                .conditionAverageRating
+            ) {
+              fillStars(
+                "conditionStarsRating",
+                resultObj.creatorRecord[0].conditionModuleRating
+                  .conditionAverageRating
+              );
+            }
 
             //Internal
             document.getElementById("UW_Observation_Condition_Internal").value =
