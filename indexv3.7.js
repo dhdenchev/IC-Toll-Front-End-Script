@@ -7,7 +7,7 @@ function fillStars(wrapperId, rating) {
     return;
   }
 
-  const stars = starsWrapper.querySelectorAll(".star");
+  const stars = starsWrapper.querySelectorAll(".star-module-header");
 
   stars.forEach((star, index) => {
     if (index < Math.floor(rating)) {
