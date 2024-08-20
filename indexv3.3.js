@@ -606,6 +606,14 @@ document.addEventListener("DOMContentLoaded", function () {
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
+            //General Answered Questions/ Questions Count & Overall Rating
+            document.getElementById("conditionAnsweredQuestions").value =
+              resultObj.creatorRecord[0].conditionModuleRating
+                .conditionAnsweredQuestions || "";
+            document.getElementById("conditionAnsweredQuestions").value =
+              resultObj.creatorRecord[0].conditionModuleRating
+                .conditionTotalQuestions || "";
+
             //Internal
             document.getElementById("UW_Observation_Condition_Internal").value =
               resultObj.creatorRecord[0].UW_Observation_Condition_Internal ||
@@ -1174,43 +1182,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //Functionality with Stars Ratings
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
-    // function initializeStarRating(container) {
-    //   const initialRating = container.getAttribute("data-initial-rating") || 0;
-    //   let ratingValue = initialRating;
-    //   const stars = container.querySelectorAll(".star");
-    //   // Log initial rating
-    //   console.log(`Initial Rating: ${initialRating}`);
-    //   // Update the stars based on the initial rating
-    //   updateStarColors(container, ratingValue);
-    //   stars.forEach((star) => {
-    //     star.addEventListener("click", function () {
-    //       ratingValue = this.getAttribute("data-value");
-    //       updateStarColors(container, ratingValue);
-    //       console.log(
-    //         `Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
-    //       );
-    //       // Save the rating value to the server using an API
-    //       saveObservationRating(sOppId, container.dataset.rating, ratingValue);
-    //     });
-    //     star.addEventListener("mouseover", function () {
-    //       updateStarColors(container, this.getAttribute("data-value"));
-    //     });
-    //     star.addEventListener("mouseout", function () {
-    //       updateStarColors(container, ratingValue);
-    //     });
-    //   });
-
-    //   function updateStarColors(container, rating) {
-    //     stars.forEach((star) => {
-    //       if (star.getAttribute("data-value") <= rating) {
-    //         star.classList.add("green");
-    //       } else {
-    //         star.classList.remove("green");
-    //       }
-    //     });
-    //   }
-    // }
-
     // Function to handle general star rating
     function initializeStarRating(container) {
       const initialRating = container.getAttribute("data-initial-rating") || 0;
@@ -1249,46 +1220,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-
-    //This functionality is for the RISKS module, changing colours
-    // function initializeRiskStarRating(container) {
-    //   const initialRating = container.getAttribute("data-initial-rating") || 0;
-    //   let ratingValue = initialRating;
-    //   const stars = container.querySelectorAll(".star");
-
-    //   // Update the stars based on the initial rating
-    //   updateRiskStarColors(container, ratingValue);
-
-    //   stars.forEach((star) => {
-    //     star.addEventListener("click", function () {
-    //       ratingValue = this.getAttribute("data-value");
-    //       updateRiskStarColors(container, ratingValue);
-    //       console.log(
-    //         `Risk Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
-    //       );
-    //       // Save the rating value to the server using an API
-    //       saveObservationRating(sOppId, container.dataset.rating, ratingValue);
-    //     });
-    //     star.addEventListener("mouseover", function () {
-    //       updateRiskStarColors(container, this.getAttribute("data-value"));
-    //     });
-    //     star.addEventListener("mouseout", function () {
-    //       updateRiskStarColors(container, ratingValue);
-    //     });
-    //   });
-
-    //   function updateRiskStarColors(container, rating) {
-    //     stars.forEach((star) => {
-    //       if (rating <= 2) {
-    //         container.classList.add("green");
-    //         container.classList.remove("red");
-    //       } else {
-    //         container.classList.add("red");
-    //         container.classList.remove("green");
-    //       }
-    //     });
-    //   }
-    // }
 
     // Function to handle risk-specific star rating
     function initializeRiskStarRating(container) {
@@ -1355,16 +1286,6 @@ document.addEventListener("DOMContentLoaded", function () {
       saveObservationRating(sOppId, textAreaName, observationNo);
     });
     //----------------------------------------------------------------------------
-    // // Initialize star rating for each rating container
-    // document.querySelectorAll(".rating-container").forEach((container) => {
-    //   initializeStarRating(container);
-    // });
-
-    // // Initialize the risk star ratings for all containers with the "risks" class
-    // document.querySelectorAll(".rating-container.risks");
-    // riskContainers.forEach((container) => {
-    //   initializeRiskStarRating(container);
-    // });
 
     // Initialize general star ratings
     document.querySelectorAll(".rating-container").forEach((container) => {
