@@ -1210,6 +1210,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
+
+    //This functionality is for the RISKS module, changing colours
+    function initializeRiskStarRating(container) {
+      const initialRating = container.getAttribute("data-initial-rating") || 0;
+      let ratingValue = initialRating;
+      const stars = container.querySelectorAll(".star");
+
+      // Update the stars based on the initial rating
+      updateRiskStarColors(container, ratingValue);
+
+      stars.forEach((star) => {
+        star.addEventListener("click", function () {
+          ratingValue = this.getAttribute("data-value");
+          updateRiskStarColors(container, ratingValue);
+          console.log(
+            `Risk Rating Value: ${ratingValue} - Container: ${container.dataset.rating}`
+          );
+          // Save the rating value to the server using an API
+          saveObservationRating(sOppId, container.dataset.rating, ratingValue);
+        });
+        star.addEventListener("mouseover", function () {
+          updateRiskStarColors(container, this.getAttribute("data-value"));
+        });
+        star.addEventListener("mouseout", function () {
+          updateRiskStarColors(container, ratingValue);
+        });
+      });
+
+      function updateRiskStarColors(container, rating) {
+        stars.forEach((star) => {
+          if (rating <= 2) {
+            container.classList.add("green");
+            container.classList.remove("red");
+          } else {
+            container.classList.add("red");
+            container.classList.remove("green");
+          }
+        });
+      }
+    }
+
     //Should we buy decision functionality
     yesText.addEventListener("click", function () {
       if (!this.classList.contains("yes-selected")) {
@@ -1235,6 +1276,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".rating-container").forEach((container) => {
       initializeStarRating(container);
     });
+
+    // Initialize the risk star ratings for all containers with the "risks" class
+    document.querySelectorAll(".rating-container.risks");
+    riskContainers.forEach((container) => {
+      initializeRiskStarRating(container);
+    });
+
     // Function to initialize text areas
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
