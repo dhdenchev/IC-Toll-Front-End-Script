@@ -1,3 +1,5 @@
+//Functionality to fill up stars colours, depending on average rating.
+
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -228,18 +230,18 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
     var elements = document.querySelectorAll(classSelector);
     // Function to update the colors of spans inside the elements
-    function updateSpanColors() {
-      elements.forEach(function (item) {
-        var spans = item.querySelectorAll("span");
-        spans.forEach(function (span) {
-          if (item.classList.contains(toggleClass)) {
-            span.style.color = "white";
-          } else {
-            span.style.color = ""; // Reset to default color
-          }
-        });
-      });
-    }
+    // function updateSpanColors() {
+    //   elements.forEach(function (item) {
+    //     var spans = item.querySelectorAll("span");
+    //     spans.forEach(function (span) {
+    //       if (item.classList.contains(toggleClass)) {
+    //         span.style.color = "white";
+    //       } else {
+    //         span.style.color = ""; // Reset to default color
+    //       }
+    //     });
+    //   });
+    // }
 
     // Initialize all editable fields on page load
 
