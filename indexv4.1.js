@@ -13,11 +13,11 @@ function fillStars(wrapperId, rating) {
 
   stars.forEach((star, index) => {
     if (index < Math.floor(rating)) {
-      star.style.color = "#90ee90"; // Fully filled star
+      star.style.color = "#00874f"; // Fully filled star
       star.style.background = "none"; // Clear any partial backgrounds
     } else if (index === Math.floor(rating)) {
       const decimalPart = rating - Math.floor(rating);
-      star.style.background = `linear-gradient(to right, #90ee90 ${
+      star.style.background = `linear-gradient(to right, #00874f ${
         decimalPart * 100
       }%, white ${decimalPart * 100}%)`;
       star.style.webkitBackgroundClip = "text"; // Ensure proper text clipping in webkit browsers
@@ -229,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSpanColorsFlag
   ) {
     var elements = document.querySelectorAll(classSelector);
+    //Turned this functionality off as it conflicts with the filling up of stars
     // Function to update the colors of spans inside the elements
     // function updateSpanColors() {
     //   elements.forEach(function (item) {
