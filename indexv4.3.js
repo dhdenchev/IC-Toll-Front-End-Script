@@ -229,20 +229,20 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSpanColorsFlag
   ) {
     var elements = document.querySelectorAll(classSelector);
-    //Turned this functionality off as it conflicts with the filling up of stars
-    // Function to update the colors of spans inside the elements
-    // function updateSpanColors() {
-    //   elements.forEach(function (item) {
-    //     var spans = item.querySelectorAll("span");
-    //     spans.forEach(function (span) {
-    //       if (item.classList.contains(toggleClass)) {
-    //         span.style.color = "white";
-    //       } else {
-    //         span.style.color = ""; // Reset to default color
-    //       }
-    //     });
-    //   });
-    // }
+
+    //Function to update the colors of spans inside the elements
+    function updateSpanColors() {
+      elements.forEach(function (item) {
+        var spans = item.querySelectorAll("span");
+        spans.forEach(function (span) {
+          if (item.classList.contains(toggleClass)) {
+            span.style.color = "white";
+          } else {
+            span.style.color = ""; // Reset to default color
+          }
+        });
+      });
+    }
 
     // Initialize all editable fields on page load
 
