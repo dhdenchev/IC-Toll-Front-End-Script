@@ -625,12 +625,12 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_Profit_Share_Percentage || "";
             //
-            //Disposal Strategy
+            //Profit Share Threshold
             document.getElementById(
-              "UW_Observation_Should_We_Buy_Disposal_Strategy"
+              "UW_Observation_Should_We_Buy_Profit_Share_Threshold"
             ).textContent =
               resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Disposal_Strategy || "";
+                .UW_Observation_Should_We_Buy_Profit_Share_Threshold || "";
             //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
