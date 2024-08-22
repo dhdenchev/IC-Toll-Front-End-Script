@@ -618,12 +618,12 @@ document.addEventListener("DOMContentLoaded", function () {
               "UW_Observation_Should_We_Buy_Net_Profit"
             ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
             //
-            //Profit Share Details
+            //Profit Share Percentage
             document.getElementById(
-              "UW_Observation_Should_We_Buy_Profit_Share_Details"
+              "UW_Observation_Should_We_Buy_Profit_Share_Percentage"
             ).textContent =
               resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Profit_Share_Details || "";
+                .UW_Observation_Should_We_Buy_Profit_Share_Percentage || "";
             //
             //Disposal Strategy
             document.getElementById(
