@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var elements = document.querySelectorAll(classSelector);
 
     //Function to update the colors of spans inside the elements
+    // This functionality shows and hides the modules from the main page
     function updateSpanColors() {
       elements.forEach(function (item) {
         var spans = item.querySelectorAll("span");
@@ -574,24 +575,9 @@ document.addEventListener("DOMContentLoaded", function () {
               "£" + formatNumber(resultObj["180DayValuation"]) || "-";
 
             //SHOULD WE BUY MODULE------------------------------------------------------------------------------------
-            document.getElementById("outraOfferRangeShouldWeBuy").textContent =
-              formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
-            //
-            document.getElementById("outraValuationShouldWeBuy").textContent =
-              "£" + formatNumber(resultObj.outraValuation) || "-";
-            //
-            document.getElementById("180DayValuationShouldWeBuy").textContent =
-              "£" + formatNumber(resultObj["180DayValuation"]) || "-";
-            //
-            document.getElementById("uwValuationShouldWeBuy").textContent =
-              "£" + formatNumber(resultObj.uwValuation) || "-";
             //
             document.getElementById("uwOfferShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
-            //
-            //
-            document.getElementById("indicativeOfferShouldWeBuy").textContent =
-              "£" + formatNumber(resultObj.indicativeOffer) || "-";
             //
             //Update Should we buy decision
 
