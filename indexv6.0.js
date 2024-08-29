@@ -718,6 +718,17 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_Contact_Name || "";
             //
+            //Asking Price
+
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Asking_Price"
+            ).textContent =
+              "£ " +
+                formatNumber(
+                  resultObj.creatorRecord[0]
+                    .UW_Observation_Should_We_Buy_Asking_Price
+                ) || "-";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
