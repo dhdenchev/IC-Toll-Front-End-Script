@@ -233,7 +233,7 @@ function updateIframeSrcStreetView(lat, lon) {
   const newSrc = `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=12,0,0,0,0&output=svembed`;
   iframe.src = newSrc;
 }
-//Function to toggle classes of the SHOULD WE BUY decision based on API response
+//Function to toggle classes of the SHOULD WE BUY/Summary decision based on API response
 const textAreaName = "Should_We_Buy_Answer";
 const observationYes = "Yes";
 const observationNo = "No";
@@ -636,12 +636,12 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("180DayValuation").textContent =
               "£" + formatNumber(resultObj["180DayValuation"]) || "-";
 
-            //SHOULD WE BUY MODULE------------------------------------------------------------------------------------
+            //SHOULD WE BUY/Summary MODULE------------------------------------------------------------------------------------
             //
             document.getElementById("uwOfferShouldWeBuy").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
             //
-            //Update Should we buy decision
+            //Update Should we buy/summary decision
 
             // Update the classes based on the simulated API response
             if (resultObj.creatorRecord[0].Should_We_Buy_Answer) {
@@ -696,6 +696,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_No_SDLT_Why
             );
+            //
+            //Profit Share Threshold
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Special_Terms"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Special_Terms || "";
             //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
