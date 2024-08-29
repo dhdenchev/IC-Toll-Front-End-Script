@@ -1407,7 +1407,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to initialize text areas
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer .dropDown"
       );
       textAreas.forEach((textArea) => {
         const initialObservation = textArea.value || "";
