@@ -711,6 +711,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_Recommended_Estate_Agent || "";
             //
+            //Contact Name (person at EA)
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Contact_Name"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Contact_Name || "";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
