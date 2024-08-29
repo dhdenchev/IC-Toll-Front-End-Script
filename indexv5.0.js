@@ -653,6 +653,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 .UW_Observation_Should_We_Buy_Stamp_Duty_Paid
             );
             //
+            //If no SDLT, Why
+            setDropdownValue(
+              "UW_Observation_Should_We_Buy_No_SDLT_Why",
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_No_SDLT_Why
+            );
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
