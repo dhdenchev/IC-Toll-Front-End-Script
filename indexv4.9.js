@@ -650,7 +650,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setDropdownValue(
               "UW_Observation_Should_We_Buy_Stamp_Duty_Paid",
               resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Profit_Stamp_Duty_Paid
+                .UW_Observation_Should_We_Buy_Stamp_Duty_Paid
             );
             //
             //------------------------------------------------------------------------------------
