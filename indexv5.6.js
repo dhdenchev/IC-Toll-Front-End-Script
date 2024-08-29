@@ -102,8 +102,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
     valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
-  const apiUrl =
-    "https://upstix-20091903020.development.catalystserverless.eu/server/WebflowInteraction/updateRecordDetails";
+  const apiUrl = "http://localhost:3000/api/updateRecordDetails";
 
   fetch(apiUrl, {
     method: "POST",
@@ -528,20 +527,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
 //-------------------------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch(
-      "https://upstix-20091903020.development.catalystserverless.eu/server/WebflowInteraction/getRecordDetails",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ sOppId: sOppId }),
-      }
-    )
+    fetch("http://localhost:3000/api/getRecordDetails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sOppId: sOppId }),
+    })
       .then((response) => response.json())
       .then((data) => {
         //console.log('Full response from middleware:', data);
