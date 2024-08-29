@@ -736,7 +736,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "UW_Observation_Should_We_Buy_Asking_Price"
               ).textContent = "-";
             }
-
+            //
+            //Prefix
+            setDropdownValue(
+              "UW_Observation_Should_We_Buy_Prefix",
+              resultObj.creatorRecord[0].UW_Observation_Should_We_Buy_Prefix
+            );
             //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
