@@ -704,6 +704,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_Special_Terms || "";
             //
+            //Recommended Estate Agent
+            document.getElementById(
+              "UW_Observation_Should_We_Buy_Recommended_Estate_Agent"
+            ).textContent =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Recommended_Estate_Agent || "";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
