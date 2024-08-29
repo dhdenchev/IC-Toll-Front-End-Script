@@ -1,22 +1,59 @@
+// // Function to set the dropdown value based on the field ID and the desired value
+// function setDropdownValue(fieldId, value) {
+//   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
+//   if (dropdown) {
+//     // Normalize the API value to lowercase and trim any extra spaces
+//     const normalizedValue = value.toLowerCase().trim(); // Ensuring the value matches the dropdown option values
+//     console.log("Normalized Value from API:", normalizedValue); // Debugging: Log the normalized value
+
+//     // Check if the value exists in the dropdown options
+//     const optionExists = Array.from(dropdown.options).some(
+//       (option) => option.value === normalizedValue
+//     );
+
+//     if (optionExists) {
+//       dropdown.value = normalizedValue; // Set the selected value dynamically
+//       console.log("Dropdown value set to:", dropdown.value); // Debugging: Confirm the value is set
+//     } else {
+//       console.error(
+//         `Value "${normalizedValue}" does not exist in dropdown options.`
+//       );
+//     }
+//   } else {
+//     console.error('Dropdown with ID "' + fieldId + '" not found.');
+//   }
+// }
+
 // Function to set the dropdown value based on the field ID and the desired value
 function setDropdownValue(fieldId, value) {
   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
   if (dropdown) {
-    // Normalize the API value to lowercase and trim any extra spaces
-    const normalizedValue = value.toLowerCase().trim(); // Ensuring the value matches the dropdown option values
-    console.log("Normalized Value from API:", normalizedValue); // Debugging: Log the normalized value
+    console.log(`Dropdown found with ID: ${fieldId}`); // Debugging: Log when dropdown is found
+    if (value !== undefined && value !== null) {
+      // Check if value is defined and not null
+      const normalizedValue = value.trim().toLowerCase(); // Normalize the API value to lowercase and trim any extra spaces
+      console.log("Normalized Value from API:", normalizedValue); // Debugging: Log the normalized value
 
-    // Check if the value exists in the dropdown options
-    const optionExists = Array.from(dropdown.options).some(
-      (option) => option.value === normalizedValue
-    );
+      // Convert dropdown options to lowercase for comparison
+      const optionExists = Array.from(dropdown.options).some(
+        (option) => option.value.toLowerCase() === normalizedValue
+      );
 
-    if (optionExists) {
-      dropdown.value = normalizedValue; // Set the selected value dynamically
-      console.log("Dropdown value set to:", dropdown.value); // Debugging: Confirm the value is set
+      if (optionExists) {
+        // Find the matching option's original value
+        const matchingOption = Array.from(dropdown.options).find(
+          (option) => option.value.toLowerCase() === normalizedValue
+        );
+        dropdown.value = matchingOption.value; // Set the selected value dynamically using the original value
+        console.log("Dropdown value set to:", dropdown.value); // Debugging: Confirm the value is set
+      } else {
+        console.error(
+          `Value "${normalizedValue}" does not exist in dropdown options.`
+        );
+      }
     } else {
       console.error(
-        `Value "${normalizedValue}" does not exist in dropdown options.`
+        "Invalid value provided. The value is either undefined or null."
       );
     }
   } else {
