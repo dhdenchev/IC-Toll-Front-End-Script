@@ -727,10 +727,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 "UW_Observation_Should_We_Buy_Asking_Price"
               ).textContent =
                 "£ " +
-                  formatNumber(
-                    resultObj.creatorRecord[0]
-                      .UW_Observation_Should_We_Buy_Asking_Price
-                  ) || "-";
+                formatNumber(
+                  resultObj.creatorRecord[0]
+                    .UW_Observation_Should_We_Buy_Asking_Price
+                );
+            } else {
+              document.getElementById(
+                "UW_Observation_Should_We_Buy_Asking_Price"
+              ).textContent = "-";
             }
 
             //
