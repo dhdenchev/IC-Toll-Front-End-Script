@@ -1,5 +1,14 @@
-//Functionality to fill up stars colours, depending on average rating.
+// Function to set the dropdown value based on the field ID and the desired value
+function setDropdownValue(fieldId, value) {
+  const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
+  if (dropdown) {
+    dropdown.value = value; // Set the selected value dynamically
+  } else {
+    console.error('Dropdown with ID "' + fieldId + '" not found.');
+  }
+}
 
+//Functionality to fill up stars colours, depending on average rating.
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -620,6 +629,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ).textContent =
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_Profit_Share_Threshold || "";
+            //
+            //Stamp Duty Paid On Purchase
+            setDropdownValue(
+              "UW_Observation_Should_We_Buy_Stamp_Duty_Paid",
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Profit_Stamp_Duty_Paid
+            );
             //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
