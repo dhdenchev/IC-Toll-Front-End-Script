@@ -104,7 +104,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
   const developmentApiUpdate = "http://localhost:3000/api/updateRecordDetails";
   const productionApiUpdate =
-    "https://upstix-20091903020.catalystserverless.eu/server/WebflowInteraction2/api/updateRecordDetails";
+    " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateRecordDetails";
 
   fetch(productionApiUpdate, {
     method: "POST",
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //-------------------------------------------------------------------------------
 const developmentApiGet = "http://localhost:3000/api/getRecordDetails";
 const productionApiGet =
-  "https://upstix-20091903020.catalystserverless.eu/server/WebflowInteraction2/api/getRecordDetails";
+  " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/getRecordDetails";
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
