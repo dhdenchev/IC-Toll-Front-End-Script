@@ -102,9 +102,11 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
     valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
-  const apiUrl = "http://localhost:3000/api/updateRecordDetails";
+  const developmentApiUpdate = "http://localhost:3000/api/updateRecordDetails";
+  const productionApiUpdate =
+    "https://upstix-20091903020.catalystserverless.eu/server/WebflowInteraction2/api/updateRecordDetails";
 
-  fetch(apiUrl, {
+  fetch(productionApiUpdate, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -528,10 +530,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 //-------------------------------------------------------------------------------
+const developmentApiGet = "http://localhost:3000/api/getRecordDetails";
+const productionApiGet =
+  "https://upstix-20091903020.catalystserverless.eu/server/WebflowInteraction2/api/getRecordDetails";
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch("http://localhost:3000/api/getRecordDetails", {
+    fetch(productionApiGet, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
