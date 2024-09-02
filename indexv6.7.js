@@ -755,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.getElementById("conditionAnsweredQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
-                .conditionAnsweredQuestions || "";
+                .conditionAnsweredQuestions || 0;
             document.getElementById("conditionTotalQuestions").textContent =
               resultObj.creatorRecord[0].conditionModuleRating
                 .conditionTotalQuestions || "";
