@@ -35,7 +35,9 @@ function setDropdownValue(fieldId, value) {
 
       // Check if the normalized value is an empty string
       if (normalizedValue === "") {
-        console.warn("Empty string provided. Setting dropdown to default.");
+        console.warn(
+          `Empty string provided for ${fieldId}. Setting dropdown to default.`
+        );
         dropdown.value = "Default"; // Set to default option if value is an empty string
         console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
         return;
