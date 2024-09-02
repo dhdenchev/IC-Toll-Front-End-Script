@@ -800,13 +800,32 @@ document.addEventListener("DOMContentLoaded", function () {
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
             //General Answered Questions/ Questions Count & Overall Rating
+            // Check if creatorRecord array exists and has at least one element
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].conditionModuleRating
+            ) {
+              // Safely access conditionAnsweredQuestions and conditionTotalQuestions
+              document.getElementById(
+                "conditionAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].conditionModuleRating
+                  .conditionAnsweredQuestions || 0;
 
-            document.getElementById("conditionAnsweredQuestions").textContent =
-              resultObj.creatorRecord[0].conditionModuleRating
-                .conditionAnsweredQuestions || 0;
-            document.getElementById("conditionTotalQuestions").textContent =
-              resultObj.creatorRecord[0].conditionModuleRating
-                .conditionTotalQuestions || "";
+              document.getElementById("conditionTotalQuestions").textContent =
+                resultObj.creatorRecord[0].conditionModuleRating
+                  .conditionTotalQuestions || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.error("Required data is missing or undefined.");
+              document.getElementById(
+                "conditionAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById("conditionTotalQuestions").textContent =
+                ""; // Default value
+            }
 
             //FILL AVERAGE STARS RATING
             if (
