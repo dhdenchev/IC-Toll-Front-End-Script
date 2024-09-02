@@ -154,7 +154,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   const productionApiUpdate =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateRecordDetails";
 
-  fetch(developmentApiUpdate, {
+  fetch(productionApiUpdate, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -584,7 +584,7 @@ const productionApiGet =
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch(developmentApiGet, {
+    fetch(productionApiGet, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1606,33 +1606,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize text areas
     initializeTextAreas();
   }, 10000); // 10 seconds
-  //Just a test for the Risks Module header
-
-  // Select the parent span with the class "risksStarsRating"
-  const risksStarsRating = document.querySelector(".risksStarsRating");
-
-  // Select all child spans with the class "star-module-header" within the parent span
-  const starSpans = risksStarsRating.querySelectorAll(".star-module-header");
-
-  // Iterate through each span and check its color style
-  starSpans.forEach((star) => {
-    const computedStyle = window.getComputedStyle(star);
-
-    // Check if the span has the specific color or linear-gradient style
-    if (
-      computedStyle.color === "rgb(0, 135, 79)" ||
-      computedStyle.backgroundImage.includes("rgb(0, 135, 79)")
-    ) {
-      // Change the color to red
-      star.style.color = "red";
-
-      // If the background is a linear-gradient, update it to use red instead of rgb(0, 135, 79)
-      if (computedStyle.backgroundImage.includes("rgb(0, 135, 79)")) {
-        star.style.backgroundImage = computedStyle.backgroundImage.replace(
-          "rgb(0, 135, 79)",
-          "red"
-        );
-      }
-    }
-  });
 });
