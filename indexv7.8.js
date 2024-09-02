@@ -337,8 +337,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function addToggleClassEvent(
     classSelector,
     toggleClass,
-    pairs,
-    updateSpanColorsFlag
+    pairs
+    // updateSpanColorsFlag
   ) {
     var elements = document.querySelectorAll(classSelector);
 
@@ -370,9 +370,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isSelected) {
           this.classList.add(toggleClass);
         }
-        if (updateSpanColorsFlag) {
-          updateSpanColors();
-        }
+        // if (updateSpanColorsFlag) {
+        //   updateSpanColors();
+        // }
 
         pairs.forEach(
           function (pair) {
@@ -409,9 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    if (updateSpanColorsFlag) {
-      updateSpanColors();
-    }
+    // if (updateSpanColorsFlag) {
+    //   updateSpanColors();
+    // }
   }
 
   var tabSectionPairs = [
