@@ -819,7 +819,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   .conditionTotalQuestions || "";
             } else {
               // Handle the case where the necessary data is missing
-              console.error("Required data is missing or undefined.");
+              console.warn(
+                "Required data for conditionAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
               document.getElementById(
                 "conditionAnsweredQuestions"
               ).textContent = 0; // Default value
@@ -827,7 +829,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ""; // Default value
             }
 
-            //FILL AVERAGE STARS RATING
+            //FILL AVERAGE STARS RATING FOR CONDITION
             // Check if creatorRecord array exists, has at least one element, and conditionModuleRating exists
             if (
               resultObj.creatorRecord &&
@@ -845,7 +847,9 @@ document.addEventListener("DOMContentLoaded", function () {
               );
             } else {
               // Handle the case where the necessary data is missing
-              console.error("Required data is missing or undefined.");
+              console.warn(
+                "Required data for CONDITION STARS RATING is missing or undefined."
+              );
               // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
             }
 
