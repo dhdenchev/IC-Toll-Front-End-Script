@@ -1190,6 +1190,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].UW_Stars_Assessment_Risks_5
               );
             //
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].risksModuleRating
+            ) {
+              // Safely access risksAnsweredQuestions and risksTotalQuestions
+              document.getElementById("risksAnsweredQuestions").textContent =
+                resultObj.creatorRecord[0].risksModuleRating
+                  .risksAnsweredQuestions || 0;
+
+              document.getElementById("risksTotalQuestions").textContent =
+                resultObj.creatorRecord[0].risksModuleRating
+                  .risksTotalQuestions || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for risksAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById("risksAnsweredQuestions").textContent = 0; // Default value
+              document.getElementById("risksTotalQuestions").textContent = ""; // Default value
+            }
+
+            //FILL AVERAGE STARS RATING FOR risks
+            // Check if creatorRecord array exists, has at least one element, and risksModuleRating exists
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].risksModuleRating &&
+              typeof resultObj.creatorRecord[0].risksModuleRating
+                .risksAverageRating !== "undefined"
+            ) {
+              // Safely access risksAverageRating and use it in fillStars function
+              fillStars(
+                "risksStarsRating",
+                resultObj.creatorRecord[0].risksModuleRating.risksAverageRating
+              );
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for risks STARS RATING is missing or undefined."
+              );
+              // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
+            }
             //END OF RISKS -------------------------------------------------------------------------------------
             //COMPARABLES -------------------------------------------------------------------------------------
             //Comparable 1
