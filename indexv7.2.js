@@ -828,15 +828,25 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             //FILL AVERAGE STARS RATING
+            // Check if creatorRecord array exists, has at least one element, and conditionModuleRating exists
             if (
-              resultObj.creatorRecord[0].conditionModuleRating
-                .conditionAverageRating
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].conditionModuleRating &&
+              typeof resultObj.creatorRecord[0].conditionModuleRating
+                .conditionAverageRating !== "undefined"
             ) {
+              // Safely access conditionAverageRating and use it in fillStars function
               fillStars(
                 "conditionStarsRating",
                 resultObj.creatorRecord[0].conditionModuleRating
                   .conditionAverageRating
               );
+            } else {
+              // Handle the case where the necessary data is missing
+              console.error("Required data is missing or undefined.");
+              // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
             }
 
             //Internal
