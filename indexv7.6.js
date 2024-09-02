@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (item.classList.contains(toggleClass)) {
             // span.style.color = "white";
           } else {
-            span.style.color = ""; // Reset to default color
+            // span.style.color = ""; // Reset to default color
           }
         });
       });
