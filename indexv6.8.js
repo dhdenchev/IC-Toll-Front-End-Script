@@ -30,9 +30,16 @@ function setDropdownValue(fieldId, value) {
   if (dropdown) {
     console.log(`Dropdown found with ID: ${fieldId}`); // Debugging: Log when dropdown is found
     if (value !== undefined && value !== null) {
-      // Check if value is defined and not null
       const normalizedValue = value.trim().toLowerCase(); // Normalize the API value to lowercase and trim any extra spaces
       console.log("Normalized Value from API:", normalizedValue); // Debugging: Log the normalized value
+
+      // Check if the normalized value is an empty string
+      if (normalizedValue === "") {
+        console.warn("Empty string provided. Setting dropdown to default.");
+        dropdown.value = "Default"; // Set to default option if value is an empty string
+        console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
+        return;
+      }
 
       // Convert dropdown options to lowercase for comparison
       const optionExists = Array.from(dropdown.options).some(
@@ -47,19 +54,17 @@ function setDropdownValue(fieldId, value) {
         dropdown.value = matchingOption.value; // Set the selected value dynamically using the original value
         console.log("Dropdown value set to:", dropdown.value); // Debugging: Confirm the value is set
       } else {
-        console.error(
-          `Value "${normalizedValue}" does not exist in dropdown options.`
+        console.warn(
+          `Value "${normalizedValue}" does not exist in dropdown options. Setting to default.`
         );
-        // Set to default option if value does not exist
-        dropdown.value = "Default";
+        dropdown.value = "Default"; // Set to default option if value does not exist
         console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
       }
     } else {
       console.warn(
         "Invalid value provided. The value is either undefined or null. Setting to default."
       );
-      // Set to default option if value is undefined or null
-      dropdown.value = "Default";
+      dropdown.value = "Default"; // Set to default option if value is undefined or null
       console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
     }
   } else {
