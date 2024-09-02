@@ -50,16 +50,57 @@ function setDropdownValue(fieldId, value) {
         console.error(
           `Value "${normalizedValue}" does not exist in dropdown options.`
         );
+        // Set to default option if value does not exist
+        dropdown.value = "Default";
+        console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
       }
     } else {
-      console.error(
-        "Invalid value provided. The value is either undefined or null."
+      console.warn(
+        "Invalid value provided. The value is either undefined or null. Setting to default."
       );
+      // Set to default option if value is undefined or null
+      dropdown.value = "Default";
+      console.log("Dropdown value set to default:", dropdown.value); // Debugging: Confirm the value is set to default
     }
   } else {
     console.error('Dropdown with ID "' + fieldId + '" not found.');
   }
 }
+// function setDropdownValue(fieldId, value) {
+//   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
+//   if (dropdown) {
+//     console.log(`Dropdown found with ID: ${fieldId}`); // Debugging: Log when dropdown is found
+//     if (value !== undefined && value !== null) {
+//       // Check if value is defined and not null
+//       const normalizedValue = value.trim().toLowerCase(); // Normalize the API value to lowercase and trim any extra spaces
+//       console.log("Normalized Value from API:", normalizedValue); // Debugging: Log the normalized value
+
+//       // Convert dropdown options to lowercase for comparison
+//       const optionExists = Array.from(dropdown.options).some(
+//         (option) => option.value.toLowerCase() === normalizedValue
+//       );
+
+//       if (optionExists) {
+//         // Find the matching option's original value
+//         const matchingOption = Array.from(dropdown.options).find(
+//           (option) => option.value.toLowerCase() === normalizedValue
+//         );
+//         dropdown.value = matchingOption.value; // Set the selected value dynamically using the original value
+//         console.log("Dropdown value set to:", dropdown.value); // Debugging: Confirm the value is set
+//       } else {
+//         console.error(
+//           `Value "${normalizedValue}" does not exist in dropdown options.`
+//         );
+//       }
+//     } else {
+//       console.error(
+//         "Invalid value provided. The value is either undefined or null."
+//       );
+//     }
+//   } else {
+//     console.error('Dropdown with ID "' + fieldId + '" not found.');
+//   }
+// }
 
 //Functionality to fill up stars colours, depending on average rating.
 function fillStars(wrapperId, rating) {
