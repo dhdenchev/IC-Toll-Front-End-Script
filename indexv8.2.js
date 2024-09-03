@@ -671,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "£" + formatNumber(resultObj.lastSalePrice) || "£-";
             }
             document.getElementById("propertyGardenArea").textContent =
-              resultObj.gardenArea + " ㎡" || "-";
+              resultObj.gardenArea || "-";
             document.getElementById("propertyParking").textContent =
               resultObj.parking || "-";
             document.getElementById("propertyTenure").textContent =
