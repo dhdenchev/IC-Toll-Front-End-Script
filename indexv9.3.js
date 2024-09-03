@@ -1147,6 +1147,71 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0].UW_Stars_Assessment_Pent_Up_Demand
               );
             //
+            //SET STARS RATING AVERAGE AND ANSWERED QUESTIONS FOR MARKET DEPTH MODULE
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+            ) {
+              // Safely access marketDepthAnsweredQuestions and marketDepthTotalQuestions
+              document.getElementById(
+                "marketDepthAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .marketDepthAnsweredQuestions || 0;
+
+              document.getElementById("marketDepthTotalQuestions").textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .marketDepthTotalQuestions || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for marketDepthAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "marketDepthAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById("marketDepthTotalQuestions").textContent =
+                ""; // Default value
+            }
+
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].marketDepthModuleRating &&
+              typeof resultObj.creatorRecord[0].marketDepthModuleRating
+                .marketDepthAverageRating !== "undefined"
+            ) {
+              // Safely access marketDepthAverageRating and log it
+              const marketDepthAverageRating =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .marketDepthAverageRating;
+              console.log(
+                "marketDepth Average Rating:",
+                marketDepthAverageRating
+              );
+
+              // Ensure the element exists before calling fillStars
+              const marketDepthStarsRatingElement = document.getElementById(
+                "marketDepthStarsRating"
+              );
+              if (!marketDepthStarsRatingElement) {
+                console.error(
+                  "Element with ID 'marketDepthStarsRating' not found."
+                );
+                return;
+              }
+
+              // Call fillStars with the valid element and rating
+              fillStars("marketDepthStarsRating", marketDepthAverageRating);
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for marketDepth STARS RATING is missing or undefined."
+              );
+            }
             //END OF MARKET DEPTH -------------------------------------------------------------------------------------
             //LOCATION  -------------------------------------------------------------------------------------
             //Position On Street
