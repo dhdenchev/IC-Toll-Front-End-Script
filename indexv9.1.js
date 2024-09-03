@@ -1149,7 +1149,6 @@ document.addEventListener("DOMContentLoaded", function () {
             //
             //END OF MARKET DEPTH -------------------------------------------------------------------------------------
             //LOCATION  -------------------------------------------------------------------------------------
-            //END OF LOCATION -------------------------------------------------------------------------------------
             //Position On Street
             document.getElementById(
               "UW_Observation_Location_Street_Position"
@@ -1225,7 +1224,67 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultObj.creatorRecord[0]
                   .UW_Stars_Assessment_Location_Proximity_To_Social_Housing
               );
-            //
+            //SET STARS RATING AVERAGE AND ANSWERED QUESTIONS FOR LOCATION MODULE
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].locationModuleRating
+            ) {
+              // Safely access locationAnsweredQuestions and locationTotalQuestions
+              document.getElementById("locationAnsweredQuestions").textContent =
+                resultObj.creatorRecord[0].locationModuleRating
+                  .locationAnsweredQuestions || 0;
+
+              document.getElementById("locationTotalQuestions").textContent =
+                resultObj.creatorRecord[0].locationModuleRating
+                  .locationTotalQuestions || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for locationAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "locationAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById("locationTotalQuestions").textContent =
+                ""; // Default value
+            }
+
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].locationModuleRating &&
+              typeof resultObj.creatorRecord[0].locationModuleRating
+                .locationAverageRating !== "undefined"
+            ) {
+              // Safely access locationAverageRating and log it
+              const locationAverageRating =
+                resultObj.creatorRecord[0].locationModuleRating
+                  .locationAverageRating;
+              console.log("location Average Rating:", locationAverageRating);
+
+              // Ensure the element exists before calling fillStars
+              const locationStarsRatingElement = document.getElementById(
+                "locationStarsRating"
+              );
+              if (!locationStarsRatingElement) {
+                console.error(
+                  "Element with ID 'locationStarsRating' not found."
+                );
+                return;
+              }
+
+              // Call fillStars with the valid element and rating
+              fillStars("locationStarsRating", locationAverageRating);
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for location STARS RATING is missing or undefined."
+              );
+            }
+            //END OF LOCATION -------------------------------------------------------------------------------------
             //EXTERNAL REPORTS -------------------------------------------------------------------------------------
             //END OF EXTERNAL REPORTS -------------------------------------------------------------------------------------
             //RISKS -------------------------------------------------------------------------------------
@@ -1278,7 +1337,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "data-initial-rating",
                 resultObj.creatorRecord[0].UW_Stars_Assessment_Risks_5
               );
-            //
+            // SET STARS RATING AND AVERAGE SCORE FOR RISKS
             if (
               resultObj.creatorRecord &&
               Array.isArray(resultObj.creatorRecord) &&
@@ -1302,29 +1361,6 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById("risksTotalQuestions").textContent = ""; // Default value
             }
 
-            //FILL AVERAGE STARS RATING FOR risks
-            // // Check if creatorRecord array exists, has at least one element, and risksModuleRating exists
-            // if (
-            //   resultObj.creatorRecord &&
-            //   Array.isArray(resultObj.creatorRecord) &&
-            //   resultObj.creatorRecord.length > 0 &&
-            //   resultObj.creatorRecord[0].risksModuleRating &&
-            //   typeof resultObj.creatorRecord[0].risksModuleRating
-            //     .risksAverageRating !== "undefined"
-            // ) {
-            //   // Safely access risksAverageRating and use it in fillStars function
-            //   fillStars(
-            //     "risksStarsRating",
-            //     resultObj.creatorRecord[0].risksModuleRating.risksAverageRating
-            //   );
-            // } else {
-            //   // Handle the case where the necessary data is missing
-            //   console.warn(
-            //     "Required data for risks STARS RATING is missing or undefined."
-            //   );
-            //   // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
-            // }
-            // Check if creatorRecord array exists, has at least one element, and risksModuleRating exists
             if (
               resultObj.creatorRecord &&
               Array.isArray(resultObj.creatorRecord) &&
