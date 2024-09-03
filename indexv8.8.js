@@ -147,14 +147,19 @@ function fillStars(wrapperId, rating) {
     return;
   }
 
-  // Determine the color based on the parent class
-  // const fillColor = starsWrapper.classList.contains("risksStarsRating")
-  //   ? "red"
-  //   : "#00874f";
+  // Log the element and its classes
+  console.log("starsWrapper element:", starsWrapper);
+  console.log("Classes on starsWrapper:", starsWrapper.className);
 
-  const fillColor = starsWrapper.classList.contains("risksStarsRating")
-    ? console.log("STARS SHOULD BE COLOR RED!")
-    : console.log("STARS SHOULD BE COLOR GREEN!");
+  // Determine the color based on the parent class
+  let fillColor;
+  if (starsWrapper.classList.contains("risksStarsRating")) {
+    fillColor = "red";
+    console.log("STARS SHOULD BE COLOR RED!");
+  } else {
+    fillColor = "#00874f";
+    console.log("STARS SHOULD BE COLOR GREEN!");
+  }
 
   const stars = starsWrapper.querySelectorAll(".star-module-header");
 
