@@ -154,7 +154,7 @@ function fillStars(wrapperId, rating) {
 
   const fillColor = starsWrapper.classList.contains("risksStarsRating")
     ? console.log("STARS SHOULD BE COLOR RED!")
-    : console.llog("STARS SHOULD BE COLOR GREEN!");
+    : console.log("STARS SHOULD BE COLOR GREEN!");
 
   const stars = starsWrapper.querySelectorAll(".star-module-header");
 
