@@ -110,6 +110,34 @@ function setDropdownValue(fieldId, value) {
 // }
 
 //Functionality to fill up stars colours, depending on average rating.
+// function fillStars(wrapperId, rating) {
+//   const starsWrapper = document.getElementById(wrapperId);
+
+//   // Ensure the stars wrapper exists
+//   if (!starsWrapper) {
+//     console.error(`Element with ID '${wrapperId}' not found.`);
+//     return;
+//   }
+
+//   const stars = starsWrapper.querySelectorAll(".star-module-header");
+
+//   stars.forEach((star, index) => {
+//     if (index < Math.floor(rating)) {
+//       star.style.color = "#00874f"; // Fully filled star
+//       star.style.background = "none"; // Clear any partial backgrounds
+//     } else if (index === Math.floor(rating)) {
+//       const decimalPart = rating - Math.floor(rating);
+//       star.style.background = `linear-gradient(to right, #00874f ${
+//         decimalPart * 100
+//       }%, white ${decimalPart * 100}%)`;
+//       star.style.webkitBackgroundClip = "text"; // Ensure proper text clipping in webkit browsers
+//       star.style.webkitTextFillColor = "transparent"; // Prevent text color from showing behind the gradient
+//     } else {
+//       star.style.color = "white"; // Empty star
+//       star.style.background = "none"; // Clear any partial backgrounds
+//     }
+//   });
+// }
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -119,15 +147,20 @@ function fillStars(wrapperId, rating) {
     return;
   }
 
+  // Determine the color based on the parent class
+  const fillColor = starsWrapper.classList.contains("risksStarsRating")
+    ? "red"
+    : "#00874f";
+
   const stars = starsWrapper.querySelectorAll(".star-module-header");
 
   stars.forEach((star, index) => {
     if (index < Math.floor(rating)) {
-      star.style.color = "#00874f"; // Fully filled star
+      star.style.color = fillColor; // Fully filled star with the determined color
       star.style.background = "none"; // Clear any partial backgrounds
     } else if (index === Math.floor(rating)) {
       const decimalPart = rating - Math.floor(rating);
-      star.style.background = `linear-gradient(to right, #00874f ${
+      star.style.background = `linear-gradient(to right, ${fillColor} ${
         decimalPart * 100
       }%, white ${decimalPart * 100}%)`;
       star.style.webkitBackgroundClip = "text"; // Ensure proper text clipping in webkit browsers
