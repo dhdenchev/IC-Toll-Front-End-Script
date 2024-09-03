@@ -1247,6 +1247,27 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             //FILL AVERAGE STARS RATING FOR risks
+            // // Check if creatorRecord array exists, has at least one element, and risksModuleRating exists
+            // if (
+            //   resultObj.creatorRecord &&
+            //   Array.isArray(resultObj.creatorRecord) &&
+            //   resultObj.creatorRecord.length > 0 &&
+            //   resultObj.creatorRecord[0].risksModuleRating &&
+            //   typeof resultObj.creatorRecord[0].risksModuleRating
+            //     .risksAverageRating !== "undefined"
+            // ) {
+            //   // Safely access risksAverageRating and use it in fillStars function
+            //   fillStars(
+            //     "risksStarsRating",
+            //     resultObj.creatorRecord[0].risksModuleRating.risksAverageRating
+            //   );
+            // } else {
+            //   // Handle the case where the necessary data is missing
+            //   console.warn(
+            //     "Required data for risks STARS RATING is missing or undefined."
+            //   );
+            //   // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
+            // }
             // Check if creatorRecord array exists, has at least one element, and risksModuleRating exists
             if (
               resultObj.creatorRecord &&
@@ -1256,17 +1277,26 @@ document.addEventListener("DOMContentLoaded", function () {
               typeof resultObj.creatorRecord[0].risksModuleRating
                 .risksAverageRating !== "undefined"
             ) {
-              // Safely access risksAverageRating and use it in fillStars function
-              fillStars(
-                "risksStarsRating",
-                resultObj.creatorRecord[0].risksModuleRating.risksAverageRating
-              );
+              // Safely access risksAverageRating and log it
+              const risksAverageRating =
+                resultObj.creatorRecord[0].risksModuleRating.risksAverageRating;
+              console.log("Risks Average Rating:", risksAverageRating);
+
+              // Ensure the element exists before calling fillStars
+              const risksStarsRatingElement =
+                document.getElementById("risksStarsRating");
+              if (!risksStarsRatingElement) {
+                console.error("Element with ID 'risksStarsRating' not found.");
+                return;
+              }
+
+              // Call fillStars with the valid element and rating
+              fillStars("risksStarsRating", risksAverageRating);
             } else {
               // Handle the case where the necessary data is missing
               console.warn(
                 "Required data for risks STARS RATING is missing or undefined."
               );
-              // Optionally, you can provide a default behavior here, like setting a default star rating or leaving it empty.
             }
             //END OF RISKS -------------------------------------------------------------------------------------
             //COMPARABLES -------------------------------------------------------------------------------------
