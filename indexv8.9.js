@@ -138,6 +138,48 @@ function setDropdownValue(fieldId, value) {
 //     }
 //   });
 // }
+// function fillStars(wrapperId, rating) {
+//   const starsWrapper = document.getElementById(wrapperId);
+
+//   // Ensure the stars wrapper exists
+//   if (!starsWrapper) {
+//     console.error(`Element with ID '${wrapperId}' not found.`);
+//     return;
+//   }
+
+//   // Log the element and its classes
+//   console.log("starsWrapper element:", starsWrapper);
+//   console.log("Classes on starsWrapper:", starsWrapper.className);
+
+//   // Determine the color based on the parent class
+//   let fillColor;
+//   if (starsWrapper.classList.contains("risksStarsRating")) {
+//     fillColor = "red";
+//     console.log("STARS SHOULD BE COLOR RED!");
+//   } else {
+//     fillColor = "#00874f";
+//     console.log("STARS SHOULD BE COLOR GREEN!");
+//   }
+
+//   const stars = starsWrapper.querySelectorAll(".star-module-header");
+
+//   stars.forEach((star, index) => {
+//     if (index < Math.floor(rating)) {
+//       star.style.color = fillColor; // Fully filled star with the determined color
+//       star.style.background = "none"; // Clear any partial backgrounds
+//     } else if (index === Math.floor(rating)) {
+//       const decimalPart = rating - Math.floor(rating);
+//       star.style.background = `linear-gradient(to right, ${fillColor} ${
+//         decimalPart * 100
+//       }%, white ${decimalPart * 100}%)`;
+//       star.style.webkitBackgroundClip = "text"; // Ensure proper text clipping in webkit browsers
+//       star.style.webkitTextFillColor = "transparent"; // Prevent text color from showing behind the gradient
+//     } else {
+//       star.style.color = "white"; // Empty star
+//       star.style.background = "none"; // Clear any partial backgrounds
+//     }
+//   });
+// }
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -147,18 +189,23 @@ function fillStars(wrapperId, rating) {
     return;
   }
 
-  // Log the element and its classes
+  // Log the element and its classes for debugging
   console.log("starsWrapper element:", starsWrapper);
   console.log("Classes on starsWrapper:", starsWrapper.className);
 
-  // Determine the color based on the parent class
+  // Determine the color based on the wrapperId and rating
   let fillColor;
-  if (starsWrapper.classList.contains("risksStarsRating")) {
-    fillColor = "red";
-    console.log("STARS SHOULD BE COLOR RED!");
+  if (wrapperId === "risksStarsRating") {
+    if (rating > 2) {
+      fillColor = "red";
+      console.log("STARS SHOULD BE COLOR RED because rating is more than 2!");
+    } else {
+      fillColor = "#00874f";
+      console.log("STARS SHOULD BE COLOR GREEN because rating is 2 or less!");
+    }
   } else {
     fillColor = "#00874f";
-    console.log("STARS SHOULD BE COLOR GREEN!");
+    console.log("STARS SHOULD BE COLOR GREEN by default!");
   }
 
   const stars = starsWrapper.querySelectorAll(".star-module-header");
