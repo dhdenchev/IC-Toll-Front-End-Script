@@ -1212,6 +1212,114 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Required data for marketDepth STARS RATING is missing or undefined."
               );
             }
+            //
+            //Set TOTAL Questions and Answered Questions for the Market Depth drop-downs
+            //SET STARS RATING AVERAGE AND ANSWERED QUESTIONS FOR MARKET DEPTH MODULE
+            //Level Of Supply
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .levelOfSupplyDropDownAnsweredQuestions &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .levelOfSupplyDropDownQuestionsCounter
+            ) {
+              // Safely access marketDepthAnsweredQuestions and marketDepthTotalQuestions
+              document.getElementById(
+                "levelOfSupplyAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .levelOfSupplyDropDownAnsweredQuestions || 0;
+
+              document.getElementById(
+                "levelOfSupplyTotalQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .levelOfSupplyDropDownQuestionsCounter || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for levelOfSupplyAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "levelOfSupplyAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById(
+                "levelOfSupplyTotalQuestions"
+              ).textContent = ""; // Default value
+            }
+            //
+            //Sales TurnOver
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .salesTurnOverDropDownAnsweredQuestions &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .salesTurnOverDropDownQuestionsCounter
+            ) {
+              // Safely access marketDepthAnsweredQuestions and marketDepthTotalQuestions
+              document.getElementById(
+                "salesTurnOverAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .salesTurnOverDropDownAnsweredQuestions || 0;
+
+              document.getElementById(
+                "salesTurnOverTotalQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .salesTurnOverDropDownQuestionsCounter || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for salesTurnOverAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "salesTurnOverAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById(
+                "salesTurnOverTotalQuestions"
+              ).textContent = ""; // Default value
+            }
+            //
+            //Level Of Demand
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .levelOfDemandDropDownAnsweredQuestions &&
+              resultObj.creatorRecord[0].marketDepthModuleRating
+                .levelOfDemandDropDownQuestionsCounter
+            ) {
+              // Safely access marketDepthAnsweredQuestions and marketDepthTotalQuestions
+              document.getElementById(
+                "levelOfDemandAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .levelOfDemandDropDownAnsweredQuestions || 0;
+
+              document.getElementById(
+                "levelOfDemandTotalQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].marketDepthModuleRating
+                  .levelOfDemandDropDownQuestionsCounter || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for levelOfDemandAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "levelOfDemandAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById(
+                "levelOfDemandTotalQuestions"
+              ).textContent = ""; // Default value
+            }
+            //
             //END OF MARKET DEPTH -------------------------------------------------------------------------------------
             //LOCATION  -------------------------------------------------------------------------------------
             //Position On Street
