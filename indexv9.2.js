@@ -1479,6 +1479,71 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_3_Link_To_Property || "";
             //
+            //SET STARS RATING AVERAGE AND ANSWERED QUESTIONS FOR COMPARABLES MODULE
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].comparablesModuleRating
+            ) {
+              // Safely access comparablesAnsweredQuestions and comparablesTotalQuestions
+              document.getElementById(
+                "comparablesAnsweredQuestions"
+              ).textContent =
+                resultObj.creatorRecord[0].comparablesModuleRating
+                  .comparablesAnsweredQuestions || 0;
+
+              document.getElementById("comparablesTotalQuestions").textContent =
+                resultObj.creatorRecord[0].comparablesModuleRating
+                  .comparablesTotalQuestions || "";
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for comparablesAnsweredQuestions is missing or undefined. Setting it to default (0)"
+              );
+              document.getElementById(
+                "comparablesAnsweredQuestions"
+              ).textContent = 0; // Default value
+              document.getElementById("comparablesTotalQuestions").textContent =
+                ""; // Default value
+            }
+
+            if (
+              resultObj.creatorRecord &&
+              Array.isArray(resultObj.creatorRecord) &&
+              resultObj.creatorRecord.length > 0 &&
+              resultObj.creatorRecord[0].comparablesModuleRating &&
+              typeof resultObj.creatorRecord[0].comparablesModuleRating
+                .comparablesAverageRating !== "undefined"
+            ) {
+              // Safely access comparablesAverageRating and log it
+              const comparablesAverageRating =
+                resultObj.creatorRecord[0].comparablesModuleRating
+                  .comparablesAverageRating;
+              console.log(
+                "comparables Average Rating:",
+                comparablesAverageRating
+              );
+
+              // Ensure the element exists before calling fillStars
+              const comparablesStarsRatingElement = document.getElementById(
+                "comparablesStarsRating"
+              );
+              if (!comparablesStarsRatingElement) {
+                console.error(
+                  "Element with ID 'comparablesStarsRating' not found."
+                );
+                return;
+              }
+
+              // Call fillStars with the valid element and rating
+              fillStars("comparablesStarsRating", comparablesAverageRating);
+            } else {
+              // Handle the case where the necessary data is missing
+              console.warn(
+                "Required data for comparables STARS RATING is missing or undefined."
+              );
+            }
             //END OF COMPARABLES -------------------------------------------------------------------------------------
             //ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
             //END OF ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
