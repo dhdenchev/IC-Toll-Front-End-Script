@@ -148,9 +148,13 @@ function fillStars(wrapperId, rating) {
   }
 
   // Determine the color based on the parent class
+  // const fillColor = starsWrapper.classList.contains("risksStarsRating")
+  //   ? "red"
+  //   : "#00874f";
+
   const fillColor = starsWrapper.classList.contains("risksStarsRating")
-    ? "red"
-    : "#00874f";
+    ? console.log("STARS SHOULD BE COLOR RED!")
+    : console.llog("STARS SHOULD BE COLOR GREEN!");
 
   const stars = starsWrapper.querySelectorAll(".star-module-header");
 
