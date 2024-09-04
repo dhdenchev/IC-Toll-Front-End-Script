@@ -771,8 +771,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("outraValuation").textContent =
               "£" + formatNumber(resultObj.outraValuation) || "-";
             //Indicative Valuation
-            document.getElementById("indicativeValuation").textContent =
-              "£" + formatNumber(resultObj.indicativeValuation) || "-";
+            document.getElementById("Indicative_Valuation").textContent =
+              "£" + formatNumber(resultObj.Indicative_Valuation) || "-";
             document.getElementById("indicativeOffer").textContent =
               "£" + formatNumber(resultObj.indicativeOffer) || "-";
             document.getElementById("uwValuation").textContent =
@@ -1989,15 +1989,20 @@ document.addEventListener("DOMContentLoaded", function () {
         textArea.value = initialObservation; // Set the initial value
 
         textArea.addEventListener("change", function () {
-          const observation = textArea.value; // Remove the trim() to allow empty strings
           const textAreaId = textArea.id; // Get the id of the textarea
           const textAreaName = textArea.name; // Get the name of the textarea
+          const moduleToUpdate = textArea.moduleToUpdate; // Get the module to be updated
+          const recordId = textArea.recordId; // Get the recordID for the record that needs to be updated
+          const fieldName = textArea.fieldName; // Get the field name that needs to be updated
+          const observation = textArea.value; // Get the value of the field that needs to be updated
 
           // Debugging logs
-          console.log(`Observation: ${observation}`);
           console.log(`TextArea ID: ${textAreaId}`);
           console.log(`TextArea Name: ${textAreaName}`);
-          console.log(`TextArea Value: ${textArea.value}`);
+          console.log(`moduleToUpdate: ${moduleToUpdate}`);
+          console.log(`recordId: ${recordId}`);
+          console.log(`fieldName: ${fieldName}`);
+          console.log(`Observation: ${observation}`);
 
           // Check if the textArea has the class 'crmValues'
           if (textArea.classList.contains("crmValues")) {
@@ -2005,7 +2010,7 @@ document.addEventListener("DOMContentLoaded", function () {
               "Calling saveValueToCRM for text area with class crmValues"
             );
             // Call saveValueToCRM for elements with class crmValues
-            saveValueToCRM(sOppId, textAreaName, observation);
+            saveValueToCRM(recordId, moduleToUpdate, fieldName, observation);
           } else {
             console.log("Calling saveObservationRating for other text areas");
             // Call saveObservationRating for all other elements
