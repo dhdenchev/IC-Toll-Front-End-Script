@@ -1990,15 +1990,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         textArea.addEventListener("change", function () {
           const textAreaId = textArea.id; // Get the id of the textarea
-          const textAreaName = textArea.name; // Get the name of the textarea
-          const moduleToUpdate = textArea.moduletoupdate; // Get the module to be updated
-          const recordId = textArea.recordid; // Get the recordID for the record that needs to be updated
-          const fieldName = textArea.fieldname; // Get the field name that needs to be updated
+          const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
+          const recordId = textArea.getAttribute("recordId"); // Correctly fetch recordId attribute
+          const fieldName = textArea.getAttribute("fieldName"); // Correctly fetch fieldName attribute
           const observation = textArea.value; // Get the value of the field that needs to be updated
 
           // Debugging logs
           console.log(`TextArea ID: ${textAreaId}`);
-          console.log(`TextArea Name: ${textAreaName}`);
           console.log(`moduleToUpdate: ${moduleToUpdate}`);
           console.log(`recordId: ${recordId}`);
           console.log(`fieldName: ${fieldName}`);
@@ -2014,7 +2012,7 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             console.log("Calling saveObservationRating for other text areas");
             // Call saveObservationRating for all other elements
-            saveObservationRating(sOppId, textAreaName, observation);
+            saveObservationRating(sOppId, textArea.name, observation);
           }
         });
       });
