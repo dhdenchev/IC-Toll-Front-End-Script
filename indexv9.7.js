@@ -1983,19 +1983,34 @@ document.addEventListener("DOMContentLoaded", function () {
       const textAreas = document.querySelectorAll(
         ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues"
       );
+
       textAreas.forEach((textArea) => {
         const initialObservation = textArea.value || "";
         textArea.value = initialObservation; // Set the initial value
+
         textArea.addEventListener("change", function () {
           const observation = textArea.value; // Remove the trim() to allow empty strings
           const textAreaId = textArea.id; // Get the id of the textarea
           const textAreaName = textArea.name; // Get the name of the textarea
+
+          // Debugging logs
           console.log(`Observation: ${observation}`);
           console.log(`TextArea ID: ${textAreaId}`);
           console.log(`TextArea Name: ${textAreaName}`);
           console.log(`TextArea Value: ${textArea.value}`);
-          // Save the rating value to the server using an API
-          saveObservationRating(sOppId, textAreaName, observation);
+
+          // Check if the textArea has the class 'crmValues'
+          if (textArea.classList.contains("crmValues")) {
+            console.log(
+              "Calling saveValueToCRM for text area with class crmValues"
+            );
+            // Call saveValueToCRM for elements with class crmValues
+            saveValueToCRM(sOppId, textAreaName, observation);
+          } else {
+            console.log("Calling saveObservationRating for other text areas");
+            // Call saveObservationRating for all other elements
+            saveObservationRating(sOppId, textAreaName, observation);
+          }
         });
       });
     }
