@@ -767,8 +767,12 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.tenure || "-";
             document.getElementById("outraOfferRange").textContent =
               formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
+            //Outra Valuation
             document.getElementById("outraValuation").textContent =
               "£" + formatNumber(resultObj.outraValuation) || "-";
+            //Indicative Valuation
+            document.getElementById("indicativeValuation").textContent =
+              "£" + formatNumber(resultObj.indicativeValuation) || "-";
             document.getElementById("indicativeOffer").textContent =
               "£" + formatNumber(resultObj.indicativeOffer) || "-";
             document.getElementById("uwValuation").textContent =
@@ -1977,7 +1981,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to initialize text areas
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues"
       );
       textAreas.forEach((textArea) => {
         const initialObservation = textArea.value || "";
