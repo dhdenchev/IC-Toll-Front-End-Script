@@ -1991,9 +1991,9 @@ document.addEventListener("DOMContentLoaded", function () {
         textArea.addEventListener("change", function () {
           const textAreaId = textArea.id; // Get the id of the textarea
           const textAreaName = textArea.name; // Get the name of the textarea
-          const moduleToUpdate = textArea.moduleToUpdate; // Get the module to be updated
-          const recordId = textArea.recordId; // Get the recordID for the record that needs to be updated
-          const fieldName = textArea.fieldName; // Get the field name that needs to be updated
+          const moduleToUpdate = textArea.moduletoupdate; // Get the module to be updated
+          const recordId = textArea.recordid; // Get the recordID for the record that needs to be updated
+          const fieldName = textArea.fieldname; // Get the field name that needs to be updated
           const observation = textArea.value; // Get the value of the field that needs to be updated
 
           // Debugging logs
