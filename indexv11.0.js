@@ -821,9 +821,9 @@ document.addEventListener("DOMContentLoaded", function () {
               "£" + formatNumber(resultObj.Indicative_Valuation) || "-";
             document.getElementById("Indicative_Offer_Lower").textContent =
               "£" + formatNumber(resultObj.indicativeOffer) || "-";
-            document.getElementById("uwValuation").textContent =
+            document.getElementById("Indicative_Offer_Lower").textContent =
               "£" + formatNumber(resultObj.uwValuation) || "-";
-            document.getElementById("uwOffer").textContent =
+            document.getElementById("IC1_Proposed_Offer").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
             document.getElementById("180DayValuation").textContent =
               "£" + formatNumber(resultObj["180DayValuation"]) || "-";
