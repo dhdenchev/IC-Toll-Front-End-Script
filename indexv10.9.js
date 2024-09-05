@@ -819,7 +819,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //Indicative Valuation
             document.getElementById("Indicative_Valuation").textContent =
               "£" + formatNumber(resultObj.Indicative_Valuation) || "-";
-            document.getElementById("indicativeOffer").textContent =
+            document.getElementById("Indicative_Offer_Lower").textContent =
               "£" + formatNumber(resultObj.indicativeOffer) || "-";
             document.getElementById("uwValuation").textContent =
               "£" + formatNumber(resultObj.uwValuation) || "-";
