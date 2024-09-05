@@ -2034,24 +2034,22 @@ document.addEventListener("DOMContentLoaded", function () {
         textArea.value = initialObservation; // Set the initial value
 
         textArea.addEventListener("change", function () {
-          const textAreaId = textArea.id; // Get the id of the textarea
-          const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
-          const recordId = textArea.getAttribute("recordId"); // Correctly fetch recordId attribute
-          const fieldName = textArea.getAttribute("fieldName"); // Correctly fetch fieldName attribute
-          const observation = textArea.value; // Get the value of the field that needs to be updated
-
-          // Debugging logs
-          console.log(`TextArea ID: ${textAreaId}`);
-          console.log(`moduleToUpdate: ${moduleToUpdate}`);
-          console.log(`recordId: ${recordId}`);
-          console.log(`fieldName: ${fieldName}`);
-          console.log(`Observation: ${observation}`);
-
           // Check if the textArea has the class 'crmValues'
           if (textArea.classList.contains("crmValues")) {
             console.log(
               "Calling saveValueToCRM for text area with class crmValues"
             );
+            //Need to extract module,recordid, fieldtoUpdate and valueofFieldtoUpdate
+            recordId = textArea.getAttribute("idToUse"); // This will look like this in the HTML  idToUse="sOppId"
+            const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
+            const fieldToUpdate = textArea.getAttribute("fieldToUpdate"); // Correctly fetch fieldName attribute
+            valueOfFieldToUpdate = textArea.value;
+
+            console.log(`ID TO USE: ${recordId}`);
+            console.log(`moduleToUpdate: ${moduleToUpdate}`);
+            console.log(`fieldToUpdate: ${fieldToUpdate}`);
+            console.log(`valueOfFieldToUpdate: ${valueOfFieldToUpdate}`);
+
             // Call saveValueToCRM for elements with class crmValues
             saveValueToCRM(
               moduleToUpdate,
@@ -2062,6 +2060,13 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             console.log("Calling saveObservationRating for other text areas");
             // Call saveObservationRating for all other elements
+            const textAreaId = textArea.id; // Get the id of the textarea
+
+            const observation = textArea.value; // Get the value of the field that needs to be updated
+
+            // Debugging logs
+            console.log(`TextArea ID: ${textAreaId}`);
+            console.log(`Observation: ${observation}`);
             saveObservationRating(sOppId, textArea.name, observation);
           }
         });
