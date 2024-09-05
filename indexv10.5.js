@@ -279,7 +279,7 @@ const saveValueToCRM = (
   const productionApiUpdateCrm =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateCrmRecordDetails";
 
-  fetch(developmentApiUpdate, {
+  fetch(developmentApiUpdateCrm, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -2041,6 +2041,11 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Need to extract module,recordid, fieldtoUpdate and valueofFieldtoUpdate
             recordId = textArea.getAttribute("idToUse"); // This will look like this in the HTML  idToUse="sOppId"
+
+            if (recordId === "sOppId") {
+              recordId = sOppId; // Use the constant sOppId value
+            }
+
             const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
             const fieldToUpdate = textArea.getAttribute("fieldToUpdate"); // Correctly fetch fieldName attribute
             valueOfFieldToUpdate = textArea.value;
