@@ -235,6 +235,7 @@ function getQueryParam(param) {
 
 let sOppId = getQueryParam("sOppId");
 
+//This function saves the changes to the Creator Record
 const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
@@ -250,6 +251,42 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
     },
     body: JSON.stringify({
       sOppId: sOppId,
+      fieldToUpdate: fieldToUpdate,
+      valueOfFieldToUpdate: valueOfFieldToUpdate,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+//This function saves the changes to the CRM record
+const saveValueToCRM = (
+  moduleToUpdate,
+  recordId,
+  fieldToUpdate,
+  valueOfFieldToUpdate
+) => {
+  // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
+  valueOfFieldToUpdate =
+    valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
+  const developmentApiUpdateCrm =
+    "http://localhost:3000/api/updateCrmRecordDetails";
+  const productionApiUpdateCrm =
+    " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateCrmRecordDetails";
+
+  fetch(developmentApiUpdate, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      moduleToUpdate: moduleToUpdate,
+      recordId: recordId,
       fieldToUpdate: fieldToUpdate,
       valueOfFieldToUpdate: valueOfFieldToUpdate,
     }),
@@ -2016,7 +2053,12 @@ document.addEventListener("DOMContentLoaded", function () {
               "Calling saveValueToCRM for text area with class crmValues"
             );
             // Call saveValueToCRM for elements with class crmValues
-            saveValueToCRM(recordId, moduleToUpdate, fieldName, observation);
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              fieldToUpdate,
+              valueOfFieldToUpdate
+            );
           } else {
             console.log("Calling saveObservationRating for other text areas");
             // Call saveObservationRating for all other elements
