@@ -770,12 +770,6 @@ document.addEventListener("DOMContentLoaded", function () {
               return date.toLocaleDateString();
             }
             //
-            //capture some of the records ID's for future development
-            sOppId = resultObj.sOppId;
-            propertyRecId = resultObj.propertyRecId;
-            offerRecId = resultObj.offerRecId;
-            productRecId = resultObj.productRecId;
-            surveyRecId = resultObj.surveyRecId;
 
             // Update the HTML elements with formatted values
             document.getElementById("propertyAddress").textContent =
@@ -2041,6 +2035,13 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Need to extract module,recordid, fieldtoUpdate and valueofFieldtoUpdate
             recordId = textArea.getAttribute("idToUse"); // This will look like this in the HTML  idToUse="sOppId"
+
+            //capture the records ID's
+            let sOppId = resultObj.sOppId;
+            let propertyRecId = resultObj.propertyRecId;
+            let offerRecId = resultObj.offerRecId;
+            let productRecId = resultObj.productRecId;
+            let surveyRecId = resultObj.surveyRecId;
 
             if (recordId === "sOppId") {
               recordId = sOppId; // Use the constant sOppId value
