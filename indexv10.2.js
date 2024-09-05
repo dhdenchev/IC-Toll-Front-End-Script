@@ -243,7 +243,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   const productionApiUpdate =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateRecordDetails";
 
-  fetch(productionApiUpdate, {
+  fetch(developmentApiUpdate, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -673,7 +673,7 @@ const productionApiGet =
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch(productionApiGet, {
+    fetch(developmentApiGet, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -732,6 +732,14 @@ document.addEventListener("DOMContentLoaded", function () {
               const date = new Date(dateString);
               return date.toLocaleDateString();
             }
+            //
+            //capture some of the records ID's for future development
+            sOppId = resultObj.sOppId;
+            propertyRecId = resultObj.propertyRecId;
+            offerRecId = resultObj.offerRecId;
+            productRecId = resultObj.productRecId;
+            surveyRecId = resultObj.surveyRecId;
+
             // Update the HTML elements with formatted values
             document.getElementById("propertyAddress").textContent =
               resultObj.street || "-";
