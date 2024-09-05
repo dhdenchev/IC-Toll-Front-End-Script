@@ -2049,7 +2049,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
             const fieldToUpdate = textArea.getAttribute("fieldToUpdate"); // Correctly fetch fieldName attribute
-            valueOfFieldToUpdate = textArea.value;
+            valueOfFieldToUpdate = textArea.value.replace("£", "");
 
             console.log(`ID TO USE: ${recordId}`);
             console.log(`moduleToUpdate: ${moduleToUpdate}`);
