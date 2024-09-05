@@ -2047,6 +2047,22 @@ document.addEventListener("DOMContentLoaded", function () {
               recordId = sOppId; // Use the constant sOppId value
             }
 
+            if (recordId === "offerRecId") {
+              recordId = offerRecId; // Use the constant offerRecId value
+            }
+
+            if (recordId === "propertyRecId") {
+              recordId = propertyRecId; // Use the constant propertyRecId value
+            }
+
+            if (recordId === "productRecId") {
+              recordId = productRecId; // Use the constant productRecId value
+            }
+
+            if (recordId === "surveyRecId") {
+              recordId = surveyRecId; // Use the constant surveyRecId value
+            }
+
             const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
             const fieldToUpdate = textArea.getAttribute("fieldToUpdate"); // Correctly fetch fieldName attribute
             valueOfFieldToUpdate = textArea.value.replace("£", "");
