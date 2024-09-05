@@ -726,6 +726,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Parse the JSON string into an object
             const resultObj = JSON.parse(data.result);
 
+            //capture the records ID's
+            var sOppId = resultObj.sOppId;
+            var propertyRecId = resultObj.propertyRecId;
+            var offerRecId = resultObj.offerRecId;
+            var productRecId = resultObj.productRecId;
+            var surveyRecId = resultObj.surveyRecId;
+
             console.log("Parsed result object:", resultObj);
             // Function to format numbers with commas
             function formatNumber(num) {
@@ -2035,13 +2042,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Need to extract module,recordid, fieldtoUpdate and valueofFieldtoUpdate
             recordId = textArea.getAttribute("idToUse"); // This will look like this in the HTML  idToUse="sOppId"
-
-            //capture the records ID's
-            let sOppId = resultObj.sOppId;
-            let propertyRecId = resultObj.propertyRecId;
-            let offerRecId = resultObj.offerRecId;
-            let productRecId = resultObj.productRecId;
-            let surveyRecId = resultObj.surveyRecId;
 
             if (recordId === "sOppId") {
               recordId = sOppId; // Use the constant sOppId value
