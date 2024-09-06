@@ -1774,7 +1774,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //------------------------------------------------------------------------------------------------------------
             // General fields from Creator DB
             //Comments
-            document.getElementById("Comments").value =
+            document.getElementById("Indicative_Offer_Justification").value =
               resultObj.creatorRecord[0].Comments || "";
             //Currently on the market link
             const currentlyOnTheMarket =
@@ -2028,7 +2028,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to initialize text areas
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, crmValuesComment"
       );
 
       textAreas.forEach((textArea) => {
@@ -2038,6 +2038,7 @@ document.addEventListener("DOMContentLoaded", function () {
         textArea.addEventListener("change", function () {
           // Check if the textArea has the class 'crmValues'
           if (textArea.classList.contains("crmValues")) {
+            valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
             console.log(
               "Calling saveValueToCRM for text area with class crmValues"
             );
@@ -2064,9 +2065,15 @@ document.addEventListener("DOMContentLoaded", function () {
               recordId = surveyRecId; // Use the constant surveyRecId value
             }
 
+            if (textArea.classList.contains("crmValuesComment")) {
+              console.log(
+                "Calling saveValueToCRM for text area with class crmValuesComment"
+              );
+              valueOfFieldToUpdate = textArea.value;
+            }
+
             const moduleToUpdate = textArea.getAttribute("moduleToUpdate"); // Correctly fetch moduleToUpdate attribute
             const fieldToUpdate = textArea.getAttribute("fieldToUpdate"); // Correctly fetch fieldName attribute
-            valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
 
             console.log(`ID TO USE: ${recordId}`);
             console.log(`moduleToUpdate: ${moduleToUpdate}`);
