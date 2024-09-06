@@ -789,11 +789,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("propertyStyle").textContent =
               resultObj.propertyStyle || "-";
             document.getElementById("propertyBedrooms").textContent =
-              resultObj.bedrooms + " Bedrooms" || "-";
+              resultObj.bedrooms || "-";
             document.getElementById("propertyBathrooms").textContent =
-              resultObj.bathrooms + " Bathrooms" || "-";
+              resultObj.bathrooms || "-";
             document.getElementById("propertyFloorArea").textContent =
-              resultObj.floorArea + " ㎡" || "-";
+              resultObj.floorArea || "-";
             if (resultObj.lastSaleDate == "-" || !resultObj.lastSaleDate) {
               document.getElementById("lastSaleDate").textContent = "-";
             } else {
@@ -914,7 +914,7 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById(
                 "UW_Observation_Should_We_Buy_Asking_Price"
               ).textContent =
-                "£ " +
+                "£" +
                 formatNumber(
                   resultObj.creatorRecord[0]
                     .UW_Observation_Should_We_Buy_Asking_Price
