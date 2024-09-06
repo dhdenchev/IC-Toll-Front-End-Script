@@ -234,6 +234,7 @@ function getQueryParam(param) {
 }
 
 let sOppId = getQueryParam("sOppId");
+let offerRecId;
 
 //This function saves the changes to the Creator Record
 const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
@@ -729,7 +730,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //capture the records ID's
             var sOppId = resultObj.sOppId;
             var propertyRecId = resultObj.propertyRecId;
-            var offerRecId = resultObj.offerRecId;
+            offerRecId = resultObj.offerRecId;
             var productRecId = resultObj.productRecId;
             var surveyRecId = resultObj.surveyRecId;
 
