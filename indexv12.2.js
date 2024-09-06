@@ -868,10 +868,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //
             //Profit Share Threshold
             document.getElementById(
-              "UW_Observation_Should_We_Buy_Profit_Share_Threshold"
+              "Profit_Share_Applicable_Above"
             ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Profit_Share_Threshold || "";
+              resultObj.creatorRecord[0].Profit_Share_Applicable_Above || "";
             //
             //Stamp Duty Paid On Purchase
             setDropdownValue(
@@ -887,7 +886,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .UW_Observation_Should_We_Buy_No_SDLT_Why
             );
             //
-            //Profit Share Threshold
+            //Special Terms
             document.getElementById(
               "UW_Observation_Should_We_Buy_Special_Terms"
             ).textContent =
