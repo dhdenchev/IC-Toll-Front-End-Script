@@ -2023,7 +2023,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to initialize text areas
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage"
       );
 
       textAreas.forEach((textArea) => {
