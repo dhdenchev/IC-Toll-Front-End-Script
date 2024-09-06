@@ -822,7 +822,7 @@ document.addEventListener("DOMContentLoaded", function () {
               "£" + formatNumber(resultObj.Indicative_Valuation) || "-";
             document.getElementById("Indicative_Offer_Lower").textContent =
               "£" + formatNumber(resultObj.indicativeOffer) || "-";
-            document.getElementById("Indicative_Offer_Lower").textContent =
+            document.getElementById("Upstix_Assessed_Value").textContent =
               "£" + formatNumber(resultObj.uwValuation) || "-";
             document.getElementById("IC1_Proposed_Offer").textContent =
               "£" + formatNumber(resultObj.uwOffer) || "-";
