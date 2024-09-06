@@ -863,11 +863,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ).textContent = resultObj.creatorRecord[0].Net_Profit || "-";
             //
             //Profit Share Percentage
-            document.getElementById(
-              "UW_Observation_Should_We_Buy_Profit_Share_Percentage"
-            ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Profit_Share_Percentage || "";
+            document.getElementById("Profit_Share").textContent =
+              resultObj.Profit_Share || "";
             //
             //Profit Share Threshold
             document.getElementById(
