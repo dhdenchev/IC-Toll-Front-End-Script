@@ -1775,7 +1775,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // General fields from Creator DB
             //Comments
             document.getElementById("Indicative_Offer_Justification").value =
-              resultObj.creatorRecord[0].Comments || "";
+              resultObj.Comments || "";
             //Currently on the market link
             const currentlyOnTheMarket =
               resultObj.creatorRecord[0].currently_on_the_market || "";
