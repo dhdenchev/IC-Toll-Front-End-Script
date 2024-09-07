@@ -812,10 +812,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("propertyGardenArea").textContent =
               resultObj.gardenArea || "-";
-            document.getElementById("propertyParking").textContent =
-              resultObj.parking || "-";
-            document.getElementById("propertyTenure").textContent =
-              resultObj.tenure || "-";
+            // document.getElementById("propertyParking").textContent =
+            //   resultObj.parking || "-";
+            setDropdownValue("propertyParking", resultObj.parking || "");
+            // document.getElementById("propertyTenure").textContent =
+            //   resultObj.tenure || "-";
+            setDropdownValue("propertyTenure", resultObj.tenure || "");
             document.getElementById("outraOfferRange").textContent =
               formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
             //Outra Valuation
