@@ -2111,6 +2111,96 @@ document.addEventListener("DOMContentLoaded", function () {
     //   });
     // }
 
+    // function initializeTextAreas() {
+    //   const textAreas = document.querySelectorAll(
+    //     ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage, .dropDownKeyFeatures"
+    //   );
+
+    //   textAreas.forEach((textArea) => {
+    //     const initialObservation = textArea.value || "";
+    //     textArea.value = initialObservation; // Set the initial value for textareas
+
+    //     // Listen for changes to both textareas and dropdowns
+    //     textArea.addEventListener("change", function () {
+    //       // Extract module, recordId, fieldToUpdate and valueOfFieldToUpdate
+    //       let recordId = textArea.getAttribute("idToUse");
+
+    //       if (recordId === "sOppId") {
+    //         recordId = sOppId;
+    //       } else if (recordId === "offerRecId") {
+    //         recordId = offerRecId;
+    //       } else if (recordId === "propertyRecId") {
+    //         recordId = propertyRecId;
+    //       } else if (recordId === "productRecId") {
+    //         recordId = productRecId;
+    //       } else if (recordId === "surveyRecId") {
+    //         recordId = surveyRecId;
+    //       }
+
+    //       const moduleToUpdate = textArea.getAttribute("moduleToUpdate");
+    //       const fieldToUpdate = textArea.getAttribute("fieldToUpdate");
+    //       let valueOfFieldToUpdate = textArea.value;
+
+    //       // Handle textareas with the "crmValues" class
+    //       if (textArea.classList.contains("crmValues")) {
+    //         valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
+    //         console.log(
+    //           "Calling saveValueToCRM for text area with class crmValues"
+    //         );
+    //         console.log(`ID TO USE: ${recordId}`);
+    //         console.log(`moduleToUpdate: ${moduleToUpdate}`);
+    //         console.log(`fieldToUpdate: ${fieldToUpdate}`);
+    //         console.log(`valueOfFieldToUpdate: ${valueOfFieldToUpdate}`);
+
+    //         // Call saveValueToCRM for elements with class crmValues
+    //         saveValueToCRM(
+    //           moduleToUpdate,
+    //           recordId,
+    //           fieldToUpdate,
+    //           valueOfFieldToUpdate
+    //         );
+    //       }
+    //       // Handle textareas with the "crmValuesComment" class
+    //       else if (textArea.classList.contains("crmValuesComment")) {
+    //         console.log(
+    //           "Calling saveValueToCRM for text area with class crmValuesComment"
+    //         );
+    //         saveValueToCRM(
+    //           moduleToUpdate,
+    //           recordId,
+    //           fieldToUpdate,
+    //           valueOfFieldToUpdate
+    //         );
+    //       }
+    //       // Handle dropdowns with the "dropDownKeyFeatures" class
+    //       else if (textArea.classList.contains("dropDownKeyFeatures")) {
+    //         valueOfFieldToUpdate = textArea.value; // Get the selected value of the dropdown
+    //         console.log(
+    //           "Calling saveValueToCRM for dropdown with class dropDownKeyFeatures"
+    //         );
+    //         console.log(`Selected Value: ${valueOfFieldToUpdate}`);
+
+    //         // Call saveValueToCRM for dropdowns
+    //         saveValueToCRM(
+    //           moduleToUpdate,
+    //           recordId,
+    //           fieldToUpdate,
+    //           valueOfFieldToUpdate
+    //         );
+    //       }
+    //       // Handle other textareas
+    //       else {
+    //         console.log("Calling saveObservationRating for other text areas");
+    //         const textAreaId = textArea.id;
+    //         const observation = textArea.value;
+    //         console.log(`TextArea ID: ${textAreaId}`);
+    //         console.log(`Observation: ${observation}`);
+    //         saveObservationRating(sOppId, textArea.name, observation);
+    //       }
+    //     });
+    //   });
+    // }
+
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
         ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage, .dropDownKeyFeatures"
@@ -2122,7 +2212,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Listen for changes to both textareas and dropdowns
         textArea.addEventListener("change", function () {
-          // Extract module, recordId, fieldToUpdate and valueOfFieldToUpdate
+          // Extract module, recordId, fieldToUpdate, and valueOfFieldToUpdate
           let recordId = textArea.getAttribute("idToUse");
 
           if (recordId === "sOppId") {
@@ -2175,6 +2265,17 @@ document.addEventListener("DOMContentLoaded", function () {
           // Handle dropdowns with the "dropDownKeyFeatures" class
           else if (textArea.classList.contains("dropDownKeyFeatures")) {
             valueOfFieldToUpdate = textArea.value; // Get the selected value of the dropdown
+
+            // Special case for "parking" field
+            if (fieldToUpdate === "parking") {
+              valueOfFieldToUpdate =
+                valueOfFieldToUpdate.toLowerCase() === "yes" ? true : false;
+              console.log(
+                "Field 'parking' detected, setting value to:",
+                valueOfFieldToUpdate
+              );
+            }
+
             console.log(
               "Calling saveValueToCRM for dropdown with class dropDownKeyFeatures"
             );
