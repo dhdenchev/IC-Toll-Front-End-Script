@@ -730,6 +730,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //capture the records ID's
             var sOppId = resultObj.sOppId;
             var propertyRecId = resultObj.propertyRecId;
+            localStorage.setItem("propertyRecId", propertyRecId); // Store it in localStorage
             offerRecId = resultObj.offerRecId;
             var productRecId = resultObj.productRecId;
             var surveyRecId = resultObj.surveyRecId;
@@ -2220,7 +2221,7 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (recordId === "offerRecId") {
             recordId = offerRecId;
           } else if (recordId === "propertyRecId") {
-            recordId = propertyRecId;
+            recordId = localStorage.getItem("propertyRecId"); // Retrieve it from localStorage
           } else if (recordId === "productRecId") {
             recordId = productRecId;
           } else if (recordId === "surveyRecId") {
