@@ -786,12 +786,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.propertyPostcode || "-";
             // document.getElementById("propertyType").textContent =
             //   resultObj.propertyType || "-";
-            setDropdownValue("propertyType", resultObj.propertyType || "-");
+            setDropdownValue("propertyType", resultObj.propertyType || "");
             // document.getElementById("propertyStyle").textContent =
             //   resultObj.propertyStyle || "-";
-            setDropdownValue("propertyStyle", resultObj.propertyStyle || "-");
-            document.getElementById("propertyBedrooms").textContent =
-              resultObj.bedrooms || "-";
+            setDropdownValue("propertyStyle", resultObj.propertyStyle || "");
+            // document.getElementById("propertyBedrooms").textContent =
+            //   resultObj.bedrooms || "-";
+            setDropdownValue("propertyBedrooms", resultObj.bedrooms || "");
             document.getElementById("propertyBathrooms").textContent =
               resultObj.bathrooms || "-";
             document.getElementById("propertyFloorArea").textContent =
