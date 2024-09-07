@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setDropdownValue("propertyType", resultObj.propertyType || "-");
             // document.getElementById("propertyStyle").textContent =
             //   resultObj.propertyStyle || "-";
-            setDropdownValue("propertyType", resultObj.propertyType || "-");
+            setDropdownValue("propertyStyle", resultObj.propertyStyle || "-");
             document.getElementById("propertyBedrooms").textContent =
               resultObj.bedrooms || "-";
             document.getElementById("propertyBathrooms").textContent =
