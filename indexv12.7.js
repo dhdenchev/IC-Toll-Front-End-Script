@@ -784,10 +784,12 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.street || "-";
             document.getElementById("propertyPostcode").textContent =
               resultObj.propertyPostcode || "-";
-            document.getElementById("propertyType").textContent =
-              resultObj.propertyType || "-";
-            document.getElementById("propertyStyle").textContent =
-              resultObj.propertyStyle || "-";
+            // document.getElementById("propertyType").textContent =
+            //   resultObj.propertyType || "-";
+            setDropdownValue("propertyType", resultObj.propertyType || "-");
+            // document.getElementById("propertyStyle").textContent =
+            //   resultObj.propertyStyle || "-";
+            setDropdownValue("propertyType", resultObj.propertyType || "-");
             document.getElementById("propertyBedrooms").textContent =
               resultObj.bedrooms || "-";
             document.getElementById("propertyBathrooms").textContent =
