@@ -728,12 +728,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const resultObj = JSON.parse(data.result);
 
             //capture the records ID's
-            var sOppId = resultObj.sOppId;
-            var propertyRecId = resultObj.propertyRecId;
+            localStorage.setItem("sOppId", sOppId); // Store it in localStorage
             localStorage.setItem("propertyRecId", propertyRecId); // Store it in localStorage
-            offerRecId = resultObj.offerRecId;
-            var productRecId = resultObj.productRecId;
-            var surveyRecId = resultObj.surveyRecId;
+            localStorage.setItem("offerRecId", offerRecId); // Store it in localStorage
+            localStorage.setItem("productRecId", productRecId); // Store it in localStorage
+            localStorage.setItem("surveyRecId", surveyRecId); // Store it in localStorage
 
             console.log("Parsed result object:", resultObj);
             // Function to format numbers with commas
@@ -2217,15 +2216,15 @@ document.addEventListener("DOMContentLoaded", function () {
           let recordId = textArea.getAttribute("idToUse");
 
           if (recordId === "sOppId") {
-            recordId = sOppId;
+            recordId = localStorage.getItem("sOppId"); // Retrieve it from localStorage
           } else if (recordId === "offerRecId") {
-            recordId = offerRecId;
+            recordId = localStorage.getItem("offerRecId"); // Retrieve it from localStorage
           } else if (recordId === "propertyRecId") {
             recordId = localStorage.getItem("propertyRecId"); // Retrieve it from localStorage
           } else if (recordId === "productRecId") {
-            recordId = productRecId;
+            recordId = localStorage.getItem("productRecId"); // Retrieve it from localStorage
           } else if (recordId === "surveyRecId") {
-            recordId = surveyRecId;
+            recordId = localStorage.getItem("surveyRecId"); // Retrieve it from localStorage
           }
 
           const moduleToUpdate = textArea.getAttribute("moduleToUpdate");
