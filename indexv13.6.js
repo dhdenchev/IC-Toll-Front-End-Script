@@ -728,11 +728,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const resultObj = JSON.parse(data.result);
 
             //capture the records ID's
-            localStorage.setItem("sOppId", sOppId); // Store it in localStorage
-            localStorage.setItem("propertyRecId", propertyRecId); // Store it in localStorage
-            localStorage.setItem("offerRecId", offerRecId); // Store it in localStorage
-            localStorage.setItem("productRecId", productRecId); // Store it in localStorage
-            localStorage.setItem("surveyRecId", surveyRecId); // Store it in localStorage
+            localStorage.setItem("sOppId", resultObj.sOppId); // Store it in localStorage
+            localStorage.setItem("propertyRecId", resultObj.propertyRecId); // Store it in localStorage
+            localStorage.setItem("offerRecId", resultObj.offerRecId); // Store it in localStorage
+            localStorage.setItem("productRecId", resultObj.productRecId); // Store it in localStorage
+            localStorage.setItem("surveyRecId", resultObj.surveyRecId); // Store it in localStorage
 
             console.log("Parsed result object:", resultObj);
             // Function to format numbers with commas
