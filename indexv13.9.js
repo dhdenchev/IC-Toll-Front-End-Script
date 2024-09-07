@@ -2249,16 +2249,27 @@ document.addEventListener("DOMContentLoaded", function () {
               fieldToUpdate,
               valueOfFieldToUpdate
             );
+          } // Handle textareas with the "crmValues" class
+          else if (textArea.classList.contains("crmValuesFrontPage")) {
+            valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
+            console.log(
+              "Calling saveValueToCRM for text area with class crmValuesFrontPage"
+            );
+
+            // Call saveValueToCRM for elements with class crmValues
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              fieldToUpdate,
+              valueOfFieldToUpdate
+            );
           }
           // Handle textareas with the "crmValuesComment" class
           else if (textArea.classList.contains("crmValuesComment")) {
             console.log(
               "Calling saveValueToCRM for text area with class crmValuesComment"
             );
-            console.log(`ID TO USE: ${recordId}`);
-            console.log(`moduleToUpdate: ${moduleToUpdate}`);
-            console.log(`fieldToUpdate: ${fieldToUpdate}`);
-            console.log(`valueOfFieldToUpdate: ${valueOfFieldToUpdate}`);
+
             saveValueToCRM(
               moduleToUpdate,
               recordId,
