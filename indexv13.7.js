@@ -728,7 +728,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const resultObj = JSON.parse(data.result);
 
             //capture the records ID's
-            localStorage.setItem("sOppId", resultObj.sOppId); // Store it in localStorage
+            localStorage.setItem("sOppId", sOppId); // Store it in localStorage
             localStorage.setItem("propertyRecId", resultObj.propertyRecId); // Store it in localStorage
             localStorage.setItem("offerRecId", resultObj.offerRecId); // Store it in localStorage
             localStorage.setItem("productRecId", resultObj.productRecId); // Store it in localStorage
