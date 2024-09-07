@@ -793,8 +793,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // document.getElementById("propertyBedrooms").textContent =
             //   resultObj.bedrooms || "-";
             setDropdownValue("propertyBedrooms", resultObj.bedrooms || "");
-            document.getElementById("propertyBathrooms").textContent =
-              resultObj.bathrooms || "-";
+            // document.getElementById("propertyBathrooms").textContent =
+            //   resultObj.bathrooms || "-";
+            setDropdownValue("propertyBathrooms", resultObj.bathrooms || "");
             document.getElementById("propertyFloorArea").textContent =
               resultObj.floorArea || "-";
             if (resultObj.lastSaleDate == "-" || !resultObj.lastSaleDate) {
