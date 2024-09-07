@@ -2255,6 +2255,10 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(
               "Calling saveValueToCRM for text area with class crmValuesComment"
             );
+            console.log(`ID TO USE: ${recordId}`);
+            console.log(`moduleToUpdate: ${moduleToUpdate}`);
+            console.log(`fieldToUpdate: ${fieldToUpdate}`);
+            console.log(`valueOfFieldToUpdate: ${valueOfFieldToUpdate}`);
             saveValueToCRM(
               moduleToUpdate,
               recordId,
