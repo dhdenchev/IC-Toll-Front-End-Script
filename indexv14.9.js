@@ -2073,9 +2073,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Determine the class and call initializeStarRating
             if (container.classList.contains("risk-rating-container")) {
-              initializeStarRating("risk-rating-container");
+              initializeStarRating(container); // Pass the actual container element
             } else {
-              initializeStarRating("rating-container");
+              initializeStarRating(container); // Pass the actual container element
             }
           });
 
