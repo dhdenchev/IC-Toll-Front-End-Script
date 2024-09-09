@@ -73,6 +73,20 @@ function setDropdownValue(fieldId, value) {
     console.error('Dropdown with ID "' + fieldId + '" not found.');
   }
 }
+
+//Function to update star colors
+function updateStarColors(rating) {
+  stars.forEach((star) => {
+    const starValue = star.getAttribute("data-value");
+    if (starValue <= rating) {
+      star.classList.add("green");
+      star.classList.remove("red");
+    } else {
+      star.classList.remove("green");
+      star.classList.remove("red");
+    }
+  });
+}
 // function setDropdownValue(fieldId, value) {
 //   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
 //   if (dropdown) {
@@ -1937,19 +1951,6 @@ document.addEventListener("DOMContentLoaded", function () {
           updateStarColors(ratingValue);
         });
       });
-
-      function updateStarColors(rating) {
-        stars.forEach((star) => {
-          const starValue = star.getAttribute("data-value");
-          if (starValue <= rating) {
-            star.classList.add("green");
-            star.classList.remove("red");
-          } else {
-            star.classList.remove("green");
-            star.classList.remove("red");
-          }
-        });
-      }
     }
 
     // Function to handle risk-specific star rating
