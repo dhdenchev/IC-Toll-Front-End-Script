@@ -1907,6 +1907,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("sOppId query parameter not found in the URL");
   }
 });
+
 //-------------------------------------------------------------------------------
 //Functionality with Stars Ratings
 document.addEventListener("DOMContentLoaded", function () {
@@ -2048,6 +2049,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
+    addRefreshIcons();
 
     // Initialize general star ratings
     document.querySelectorAll(".rating-container").forEach((container) => {
