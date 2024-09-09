@@ -2048,17 +2048,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Optional: Add a hover effect
           refreshButton.addEventListener("mouseenter", function () {
-            refreshButton.style.transform = "rotate(90deg)"; // Rotate the icon on hover
+            refreshButton.style.transform = "rotate(180deg)"; // Rotate the icon on hover
           });
 
           refreshButton.addEventListener("mouseleave", function () {
             refreshButton.style.transform = "rotate(0deg)"; // Reset the rotation on mouse leave
           });
 
-          // Optional: Add an event listener for the refresh button
+          // Add an event listener for the refresh button
           refreshButton.addEventListener("click", function () {
             console.log("Refresh clicked for:", container.id);
-            // Add any logic you want to perform on refresh click here
+
+            // Call saveObservationRating with ratingValue as 0
+            const ratingValue = 0; // Set the rating value to 0
+            saveObservationRating(
+              sOppId,
+              container.dataset.rating,
+              ratingValue
+            );
           });
 
           // Append the refresh button after the last star
