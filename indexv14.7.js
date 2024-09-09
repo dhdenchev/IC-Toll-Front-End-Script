@@ -73,20 +73,6 @@ function setDropdownValue(fieldId, value) {
     console.error('Dropdown with ID "' + fieldId + '" not found.');
   }
 }
-
-//Function to update star colors
-function updateStarColors(rating) {
-  stars.forEach((star) => {
-    const starValue = star.getAttribute("data-value");
-    if (starValue <= rating) {
-      star.classList.add("green");
-      star.classList.remove("red");
-    } else {
-      star.classList.remove("green");
-      star.classList.remove("red");
-    }
-  });
-}
 // function setDropdownValue(fieldId, value) {
 //   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
 //   if (dropdown) {
@@ -1951,6 +1937,19 @@ document.addEventListener("DOMContentLoaded", function () {
           updateStarColors(ratingValue);
         });
       });
+
+      function updateStarColors(rating) {
+        stars.forEach((star) => {
+          const starValue = star.getAttribute("data-value");
+          if (starValue <= rating) {
+            star.classList.add("green");
+            star.classList.remove("red");
+          } else {
+            star.classList.remove("green");
+            star.classList.remove("red");
+          }
+        });
+      }
     }
 
     // Function to handle risk-specific star rating
@@ -2072,8 +2071,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Change the "data-initial-rating" attribute to "0"
             container.setAttribute("data-initial-rating", "0");
 
-            // Call updateStarColors with 0
-            updateStarColors(ratingValue);
+            // Determine the class and call initializeStarRating
+            if (container.classList.contains("risk-rating-container")) {
+              initializeStarRating("risk-rating-container");
+            } else {
+              initializeStarRating("rating-container");
+            }
           });
 
           // Append the refresh button after the last star
