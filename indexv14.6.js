@@ -180,6 +180,7 @@ function setDropdownValue(fieldId, value) {
 //     }
 //   });
 // }
+//This function is filling the AVERAGE stars ratings for the head modules
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -2048,7 +2049,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Optional: Add a hover effect
           refreshButton.addEventListener("mouseenter", function () {
-            refreshButton.style.transform = "rotate(180deg)"; // Rotate the icon on hover
+            refreshButton.style.transform = "rotate(270deg)"; // Rotate the icon on hover
           });
 
           refreshButton.addEventListener("mouseleave", function () {
@@ -2066,6 +2067,12 @@ document.addEventListener("DOMContentLoaded", function () {
               container.dataset.rating,
               ratingValue
             );
+
+            // Change the "data-initial-rating" attribute to "0"
+            container.setAttribute("data-initial-rating", "0");
+
+            // Call updateStarColors with 0
+            updateStarColors(ratingValue);
           });
 
           // Append the refresh button after the last star
