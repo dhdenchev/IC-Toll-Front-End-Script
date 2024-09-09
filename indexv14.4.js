@@ -2035,8 +2035,25 @@ document.addEventListener("DOMContentLoaded", function () {
           // Create a refresh icon button
           const refreshButton = document.createElement("button");
           refreshButton.innerHTML = "⟳"; // Refresh icon
+
+          // Style the refresh button
           refreshButton.style.marginLeft = "8px"; // Add some margin for spacing
           refreshButton.style.cursor = "pointer"; // Make it look clickable
+          refreshButton.style.background = "none"; // Remove default button background
+          refreshButton.style.border = "none"; // Remove default button border
+          refreshButton.style.fontSize = "24px"; // Adjust the size of the icon
+          refreshButton.style.color = "#00b66b"; // Set the color to dark green
+          refreshButton.style.padding = "5px"; // Add some padding around the icon
+          refreshButton.style.transition = "transform 0.3s"; // Smooth transition for hover effect
+
+          // Optional: Add a hover effect
+          refreshButton.addEventListener("mouseenter", function () {
+            refreshButton.style.transform = "rotate(90deg)"; // Rotate the icon on hover
+          });
+
+          refreshButton.addEventListener("mouseleave", function () {
+            refreshButton.style.transform = "rotate(0deg)"; // Reset the rotation on mouse leave
+          });
 
           // Optional: Add an event listener for the refresh button
           refreshButton.addEventListener("click", function () {
