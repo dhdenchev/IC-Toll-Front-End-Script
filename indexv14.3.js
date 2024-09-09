@@ -2034,7 +2034,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (stars.length > 0) {
           // Create a refresh icon button
           const refreshButton = document.createElement("button");
-          refreshButton.innerHTML = "🔄"; // Refresh icon
+          refreshButton.innerHTML = "⟳"; // Refresh icon
           refreshButton.style.marginLeft = "8px"; // Add some margin for spacing
           refreshButton.style.cursor = "pointer"; // Make it look clickable
 
