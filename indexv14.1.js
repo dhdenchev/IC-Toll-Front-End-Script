@@ -245,7 +245,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   const productionApiUpdate =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateRecordDetails";
 
-  fetch(productionApiUpdate, {
+  fetch(developmentApiUpdate, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -280,7 +280,7 @@ const saveValueToCRM = (
   const productionApiUpdateCrm =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateCrmRecordDetails";
 
-  fetch(productionApiUpdateCrm, {
+  fetch(developmentApiUpdateCrm, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -711,7 +711,7 @@ const productionApiGet =
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch(productionApiGet, {
+    fetch(developmentApiGet, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -2015,6 +2015,39 @@ document.addEventListener("DOMContentLoaded", function () {
       saveObservationRating(sOppId, textAreaName, observationNo);
     });
     //----------------------------------------------------------------------------
+
+    //Stars rating - Add refresh/restart button/icon after the last star
+
+    function addRefreshIcons() {
+      // Find all elements with a class that contains "rating-container"
+      const ratingContainers = document.querySelectorAll(
+        '[class*="rating-container"]'
+      );
+
+      // Iterate through each rating container
+      ratingContainers.forEach((container) => {
+        // Find all the stars within the container
+        const stars = container.querySelectorAll(".star");
+
+        // If stars exist in the container, proceed to add the refresh button after the last star
+        if (stars.length > 0) {
+          // Create a refresh icon button
+          const refreshButton = document.createElement("button");
+          refreshButton.innerHTML = "🔄"; // Refresh icon
+          refreshButton.style.marginLeft = "8px"; // Add some margin for spacing
+          refreshButton.style.cursor = "pointer"; // Make it look clickable
+
+          // Optional: Add an event listener for the refresh button
+          refreshButton.addEventListener("click", function () {
+            console.log("Refresh clicked for:", container.id);
+            // Add any logic you want to perform on refresh click here
+          });
+
+          // Append the refresh button after the last star
+          stars[stars.length - 1].after(refreshButton);
+        }
+      });
+    }
 
     // Initialize general star ratings
     document.querySelectorAll(".rating-container").forEach((container) => {
