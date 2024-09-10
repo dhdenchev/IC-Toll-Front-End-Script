@@ -2396,8 +2396,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Set today's date
             const today = new Date();
-            const options = { year: "numeric", month: "short", day: "numeric" };
-            const formattedDate = today.toLocaleDateString("en-US", options);
+            const formattedDate = today.toISOString().split("T")[0]; // Extracts the date in 'YYYY-MM-DD' format
+
+            console.log("Today's date value sent to CRM" + formattedDate);
             //
             saveValueToCRM(
               moduleToUpdate,
