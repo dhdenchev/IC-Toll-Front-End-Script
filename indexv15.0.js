@@ -2374,6 +2374,16 @@ document.addEventListener("DOMContentLoaded", function () {
               fieldToUpdate,
               valueOfFieldToUpdate
             );
+
+            console.log(
+              "Call saveValueToCrm function to also select the 'Manually Edited From IC Tool' checkbox "
+            );
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Manually_Edited_From_IC_Tool",
+              true
+            );
           }
           // Handle other textareas
           else {
