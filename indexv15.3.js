@@ -2380,13 +2380,30 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             console.log(
-              "Call saveValueToCrm function to also select the 'Manually Edited From IC Tool' checkbox "
+              "Call saveValueToCrm function to also select the 'Manually Edited From IC Tool' checkbox, Source of update and date of update"
             );
             saveValueToCRM(
               moduleToUpdate,
               recordId,
               "Manually_Edited_From_IC_Tool",
               true
+            );
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Source_of_Manual_Update",
+              "IC TOOL WEBFLOW"
+            );
+            //Set today's date
+            const today = new Date();
+            const options = { year: "numeric", month: "short", day: "numeric" };
+            const formattedDate = today.toLocaleDateString("en-US", options);
+            //
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Date_of_Manual_Update",
+              formattedDate
             );
           }
           // Handle other textareas
