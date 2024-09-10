@@ -276,6 +276,10 @@ const saveValueToCRM = (
   // Ensure valueOfFieldToUpdate is assigned correctly, even if it's an empty string
   valueOfFieldToUpdate =
     valueOfFieldToUpdate === undefined ? "" : valueOfFieldToUpdate;
+  console.log(
+    "saveValueToCRM function called. valueOfFieldToUpdate: " +
+      valueOfFieldToUpdate
+  );
   const developmentApiUpdateCrm =
     "http://localhost:3000/api/updateCrmRecordDetails";
   const productionApiUpdateCrm =
