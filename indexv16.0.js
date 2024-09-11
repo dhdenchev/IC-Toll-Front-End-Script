@@ -1784,6 +1784,35 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             //END OF COMPARABLES -------------------------------------------------------------------------------------
             //ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
+
+            //Estate Agent 1
+            //Name of Agent
+            document.getElementById(
+              "UW_Observation_Estate_Agent_1_Name_Of_Agent"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_1_Name_Of_Agent || "";
+            //Contact at Agency
+            document.getElementById(
+              "UW_Observation_Estate_Agent_1_Contact_At_Agency"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_1_Contact_At_Agency || "";
+            //Notes Agent 1
+            document.getElementById(
+              "UW_Observation_Estate_Agent_1_Notes"
+            ).value =
+              resultObj.creatorRecord[0].UW_Observation_Estate_Agent_1_Notes ||
+              "";
+            //
+
+            //Estate Agent 2
+            document.getElementById(
+              "UW_Observation_Estate_Agent_1_Name_Of_Agent"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_1_Name_Of_Agent || "";
+
             //END OF ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------
             // General fields from Creator DB
