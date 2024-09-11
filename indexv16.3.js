@@ -1786,11 +1786,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
 
             //Estate Agent 1
-            
+
             //Name of Agent in the header module
-            document.getElementById(
-              "estateAgentPreferredChoice"
-            ).value =
+            document.getElementById("estateAgentPreferredChoice").value =
               resultObj.creatorRecord[0]
                 .UW_Observation_Estate_Agent_1_Name_Of_Agent || "";
             //Name of Agent
