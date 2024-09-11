@@ -246,7 +246,7 @@ const saveObservationRating = (sOppId, fieldToUpdate, valueOfFieldToUpdate) => {
   const productionApiUpdate =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateRecordDetails";
 
-  fetch(productionApiUpdate, {
+  fetch(developmentApiUpdate, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -285,7 +285,7 @@ const saveValueToCRM = (
   const productionApiUpdateCrm =
     " https://ic-tool-middleware-b0d5a7c7355b.herokuapp.com/api/updateCrmRecordDetails";
 
-  fetch(productionApiUpdateCrm, {
+  fetch(developmentApiUpdateCrm, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -716,7 +716,7 @@ const productionApiGet =
 
 document.addEventListener("DOMContentLoaded", function () {
   if (sOppId) {
-    fetch(productionApiGet, {
+    fetch(developmentApiGet, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
