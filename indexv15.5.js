@@ -2398,7 +2398,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const today = new Date();
             const formattedDate = today.toISOString().split("T")[0]; // Extracts the date in 'YYYY-MM-DD' format
 
-            console.log("Today's date value sent to CRM" + formattedDate);
             //
             saveValueToCRM(
               moduleToUpdate,
