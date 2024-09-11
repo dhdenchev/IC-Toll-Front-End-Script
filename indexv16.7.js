@@ -825,7 +825,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setDropdownValue("propertyParking", resultObj.parking || "");
 
             setDropdownValue("propertyTenure", resultObj.tenure || "");
-            setDropdownValue("gardenArea", resultObj.propertyType || "");
+            setDropdownValue("propertyGardenArea", resultObj.gardenArea || "");
             document.getElementById("outraOfferRange").textContent =
               formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
             //Outra Valuation
