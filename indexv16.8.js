@@ -823,9 +823,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //   resultObj.gardenArea || "-";
 
             setDropdownValue("propertyParking", resultObj.parking || "");
-
-            setDropdownValue("propertyTenure", resultObj.tenure || "");
             setDropdownValue("propertyGardenArea", resultObj.gardenArea || "");
+            setDropdownValue("propertyTenure", resultObj.tenure || "");
+
             document.getElementById("outraOfferRange").textContent =
               formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
             //Outra Valuation
@@ -2429,7 +2429,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Special case for "parking" field
             if (fieldToUpdate === "parking") {
               valueOfFieldToUpdate =
-                valueOfFieldToUpdate.toLowerCase() === "yes" ? true : false;
+                valueOfFieldToUpdate.toLowerCase() === "yes" ? "true" : "false";
               console.log(
                 "Field 'parking' detected, setting value to:",
                 valueOfFieldToUpdate
@@ -2439,7 +2439,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Special case for "gardenArea" field
             if (fieldToUpdate === "gardenArea") {
               valueOfFieldToUpdate =
-                valueOfFieldToUpdate.toLowerCase() === "yes" ? true : false;
+                valueOfFieldToUpdate.toLowerCase() === "yes" ? "true" : "false";
               console.log(
                 "Field 'gardenArea' detected, setting value to:",
                 valueOfFieldToUpdate
