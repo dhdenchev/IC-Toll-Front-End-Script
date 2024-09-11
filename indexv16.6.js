@@ -797,13 +797,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.street || "-";
             document.getElementById("propertyPostcode").textContent =
               resultObj.propertyPostcode || "-";
-            
+
             setDropdownValue("propertyType", resultObj.propertyType || "");
-            
+
             setDropdownValue("propertyStyle", resultObj.propertyStyle || "");
-            
+
             setDropdownValue("propertyBedrooms", resultObj.bedrooms || "");
-            
+
             setDropdownValue("propertyBathrooms", resultObj.bathrooms || "");
             document.getElementById("propertyFloorArea").textContent =
               resultObj.floorArea || "-";
@@ -819,11 +819,11 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById("lastSalePrice").textContent =
                 "£" + formatNumber(resultObj.lastSalePrice) || "£-";
             }
-            document.getElementById("propertyGardenArea").textContent =
-              resultObj.gardenArea || "-";
-            
+            // document.getElementById("propertyGardenArea").textContent =
+            //   resultObj.gardenArea || "-";
+
             setDropdownValue("propertyParking", resultObj.parking || "");
-            
+
             setDropdownValue("propertyTenure", resultObj.tenure || "");
             setDropdownValue("gardenArea", resultObj.propertyType || "");
             document.getElementById("outraOfferRange").textContent =
