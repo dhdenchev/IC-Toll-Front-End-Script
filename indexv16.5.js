@@ -797,17 +797,13 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.street || "-";
             document.getElementById("propertyPostcode").textContent =
               resultObj.propertyPostcode || "-";
-            // document.getElementById("propertyType").textContent =
-            //   resultObj.propertyType || "-";
+            
             setDropdownValue("propertyType", resultObj.propertyType || "");
-            // document.getElementById("propertyStyle").textContent =
-            //   resultObj.propertyStyle || "-";
+            
             setDropdownValue("propertyStyle", resultObj.propertyStyle || "");
-            // document.getElementById("propertyBedrooms").textContent =
-            //   resultObj.bedrooms || "-";
+            
             setDropdownValue("propertyBedrooms", resultObj.bedrooms || "");
-            // document.getElementById("propertyBathrooms").textContent =
-            //   resultObj.bathrooms || "-";
+            
             setDropdownValue("propertyBathrooms", resultObj.bathrooms || "");
             document.getElementById("propertyFloorArea").textContent =
               resultObj.floorArea || "-";
@@ -825,12 +821,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("propertyGardenArea").textContent =
               resultObj.gardenArea || "-";
-            // document.getElementById("propertyParking").textContent =
-            //   resultObj.parking || "-";
+            
             setDropdownValue("propertyParking", resultObj.parking || "");
-            // document.getElementById("propertyTenure").textContent =
-            //   resultObj.tenure || "-";
+            
             setDropdownValue("propertyTenure", resultObj.tenure || "");
+            setDropdownValue("gardenArea", resultObj.propertyType || "");
             document.getElementById("outraOfferRange").textContent =
               formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
             //Outra Valuation
@@ -2437,6 +2432,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 valueOfFieldToUpdate.toLowerCase() === "yes" ? true : false;
               console.log(
                 "Field 'parking' detected, setting value to:",
+                valueOfFieldToUpdate
+              );
+            }
+
+            // Special case for "gardenArea" field
+            if (fieldToUpdate === "gardenArea") {
+              valueOfFieldToUpdate =
+                valueOfFieldToUpdate.toLowerCase() === "yes" ? true : false;
+              console.log(
+                "Field 'gardenArea' detected, setting value to:",
                 valueOfFieldToUpdate
               );
             }
