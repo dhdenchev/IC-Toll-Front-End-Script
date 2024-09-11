@@ -180,7 +180,7 @@ function setDropdownValue(fieldId, value) {
 //     }
 //   });
 // }
-//This function is filling the AVERAGE stars ratings for the head modules
+//This function is filling the AVERAGE stars ratings and the number displayed for the head modules
 function fillStars(wrapperId, rating) {
   const starsWrapper = document.getElementById(wrapperId);
 
@@ -227,6 +227,14 @@ function fillStars(wrapperId, rating) {
       star.style.background = "none"; // Clear any partial backgrounds
     }
   });
+
+  // Update the .star-module-header-number with the rating
+  const ratingDisplay = starsWrapper.querySelector(
+    ".star-module-header-number"
+  );
+  if (ratingDisplay) {
+    ratingDisplay.textContent = `(${rating.toFixed(1)}/5)`; // Display the rating with one decimal place
+  }
 }
 
 function getQueryParam(param) {
