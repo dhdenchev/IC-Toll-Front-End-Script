@@ -1805,13 +1805,46 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0].UW_Observation_Estate_Agent_1_Notes ||
               "";
             //
-
             //Estate Agent 2
+            //Name of Agent
             document.getElementById(
-              "UW_Observation_Estate_Agent_1_Name_Of_Agent"
+              "UW_Observation_Estate_Agent_2_Name_Of_Agent"
             ).value =
               resultObj.creatorRecord[0]
-                .UW_Observation_Estate_Agent_1_Name_Of_Agent || "";
+                .UW_Observation_Estate_Agent_2_Name_Of_Agent || "";
+            //Contact at Agency
+            document.getElementById(
+              "UW_Observation_Estate_Agent_2_Contact_At_Agency"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_2_Contact_At_Agency || "";
+            //Notes Agent 2
+            document.getElementById(
+              "UW_Observation_Estate_Agent_2_Notes"
+            ).value =
+              resultObj.creatorRecord[0].UW_Observation_Estate_Agent_2_Notes ||
+              "";
+            //
+            //Estate Agent 3
+            //Name of Agent
+            document.getElementById(
+              "UW_Observation_Estate_Agent_3_Name_Of_Agent"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_3_Name_Of_Agent || "";
+            //Contact at Agency
+            document.getElementById(
+              "UW_Observation_Estate_Agent_3_Contact_At_Agency"
+            ).value =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Estate_Agent_3_Contact_At_Agency || "";
+            //Notes Agent 3
+            document.getElementById(
+              "UW_Observation_Estate_Agent_3_Notes"
+            ).value =
+              resultObj.creatorRecord[0].UW_Observation_Estate_Agent_3_Notes ||
+              "";
+            //
 
             //END OF ESTATE AGENT RECOMMENDATION -------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------
