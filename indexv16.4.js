@@ -1787,8 +1787,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Estate Agent 1
 
-            //Name of Agent in the header module
-            document.getElementById("estateAgentPreferredChoice").value =
+            // Name of Agent in the header module
+            document.getElementById("estateAgentPreferredChoice").textContent =
               resultObj.creatorRecord[0]
                 .UW_Observation_Estate_Agent_1_Name_Of_Agent || "";
             //Name of Agent
