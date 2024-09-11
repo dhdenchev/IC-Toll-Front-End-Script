@@ -228,12 +228,12 @@ function fillStars(wrapperId, rating) {
     }
   });
 
-  // Update the .star-module-header-number with the rating
+  // Update the .star-module-header-number with the unrounded rating
   const ratingDisplay = starsWrapper.querySelector(
     ".star-module-header-number"
   );
   if (ratingDisplay) {
-    ratingDisplay.textContent = `(${rating.toFixed(1)}/5)`; // Display the rating with one decimal place
+    ratingDisplay.textContent = `(${rating.toFixed(1)})`; // Display the rating with one decimal place
   }
 }
 
