@@ -750,9 +750,22 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Parsed result object:", resultObj);
             // Function to format numbers with commas
             function formatNumber(num) {
+              // Check if the input is "-" or an empty string
+              if (num === "-" || num === "") {
+                return "-"; // Return "-" if the input is invalid
+              }
+
+              // If the input is a string, clean it and convert to a float
               if (typeof num === "string") {
                 num = parseFloat(num.replace(/[^0-9.-]+/g, ""));
               }
+
+              // If num is NaN after conversion, return "-"
+              if (isNaN(num)) {
+                return "-";
+              }
+
+              // Otherwise, return the formatted number
               return num.toLocaleString();
             }
             // Function to format the OutraOfferRange
