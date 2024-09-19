@@ -916,8 +916,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(
               "UW_Observation_Should_We_Buy_Special_Terms"
             ).textContent =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Should_We_Buy_Special_Terms || "";
+              resultObj.UW_Observation_Should_We_Buy_Special_Terms || "";
             //
             //Recommended Estate Agent
             document.getElementById(
@@ -2426,6 +2425,19 @@ document.addEventListener("DOMContentLoaded", function () {
           else if (textArea.classList.contains("crmValuesComment")) {
             console.log(
               "Calling saveValueToCRM for text area with class crmValuesComment"
+            );
+
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              fieldToUpdate,
+              valueOfFieldToUpdate
+            );
+          }
+          // Handle textareas with the "crmObservationsComment" class
+          else if (textArea.classList.contains("crmObservationsComment")) {
+            console.log(
+              "Calling crmObservationsComment for text area with class crmObservationsComment"
             );
 
             saveValueToCRM(
