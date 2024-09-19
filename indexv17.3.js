@@ -25,8 +25,13 @@
 // }
 
 // Function to format the date to 'mmm d, yyyy'
+// Function to format a date from 'YYYY-MM-DD' to 'mmm d, yyyy'
 function formatDateToReadable(dateString) {
-  const date = new Date(dateString);
+  const dateParts = dateString.split("-"); // Split the string by '-'
+
+  const year = dateParts[0];
+  const month = parseInt(dateParts[1], 10) - 1; // Convert month to 0-indexed
+  const day = parseInt(dateParts[2], 10);
 
   // Array of month names
   const monthNames = [
@@ -44,14 +49,13 @@ function formatDateToReadable(dateString) {
     "Dec",
   ];
 
-  const day = date.getDate();
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
-
   // Return formatted date in 'mmm d, yyyy' format
-  return `${month} ${day}, ${year}`;
+  return `${monthNames[month]} ${day}, ${year}`;
 }
 
+// Example usage
+const formattedDate = formatDateToReadable("2024-09-19");
+console.log(formattedDate); // Output: Sep 19, 2024
 // Function to set the dropdown value based on the field ID and the desired value
 function setDropdownValue(fieldId, value) {
   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
@@ -2388,7 +2392,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage, .dropDownKeyFeatures"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage:not([type='date']), .dropDownKeyFeatures"
       );
 
       textAreas.forEach((textArea) => {
@@ -2595,7 +2599,65 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Initialize text areas
-    initializeTextAreas();
+    function initializeDatePickers() {
+      const datePickers = document.querySelectorAll(
+        'input[type="date"].crmValuesFrontPage'
+      );
+
+      datePickers.forEach((datePicker) => {
+        datePicker.addEventListener("change", function () {
+          const selectedDate = datePicker.value; // This is in 'YYYY-MM-DD' format
+
+          if (!selectedDate) {
+            console.log("No date selected");
+            return; // Exit if no date is selected
+          }
+
+          // Format the date to 'mmm d, yyyy'
+          const formattedDate = formatDateToReadable(selectedDate);
+          console.log(`Formatted Date: ${formattedDate}`);
+
+          // Extract module, recordId, fieldToUpdate from the date picker attributes
+          let recordId = datePicker.getAttribute("idToUse");
+          if (recordId === "propertyRecId") {
+            recordId = localStorage.getItem("propertyRecId");
+          }
+
+          const moduleToUpdate = datePicker.getAttribute("moduleToUpdate");
+          const fieldToUpdate = datePicker.getAttribute("fieldToUpdate");
+
+          // Call saveValueToCRM for date pickers with formatted date
+          saveValueToCRM(
+            moduleToUpdate,
+            recordId,
+            fieldToUpdate,
+            formattedDate
+          );
+
+          // Additional logic for manual updates
+          saveValueToCRM(
+            moduleToUpdate,
+            recordId,
+            "Manually_Edited_From_IC_Tool",
+            true
+          );
+          saveValueToCRM(
+            moduleToUpdate,
+            recordId,
+            "Source_of_Manual_Update",
+            "IC TOOL WEBFLOW"
+          );
+          saveValueToCRM(
+            moduleToUpdate,
+            recordId,
+            "Date_of_Manual_Update",
+            formattedDate
+          );
+        });
+      });
+    }
+
+    initializeTextAreas(); // Initialize regular text areas and dropdowns
+    initializeDatePickers(); // Initialize date pickers
   }, 10000); // 10 seconds
 });
