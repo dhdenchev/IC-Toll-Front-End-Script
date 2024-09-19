@@ -24,6 +24,34 @@
 //   }
 // }
 
+// Function to format the date to 'mmm d, yyyy'
+function formatDateToReadable(dateString) {
+  const date = new Date(dateString);
+
+  // Array of month names
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+
+  // Return formatted date in 'mmm d, yyyy' format
+  return `${month} ${day}, ${year}`;
+}
+
 // Function to set the dropdown value based on the field ID and the desired value
 function setDropdownValue(fieldId, value) {
   const dropdown = document.getElementById(fieldId); // Use the fieldId parameter to get the dropdown element
@@ -2388,6 +2416,49 @@ document.addEventListener("DOMContentLoaded", function () {
           const fieldToUpdate = textArea.getAttribute("fieldToUpdate");
           let valueOfFieldToUpdate = textArea.value;
 
+          // Handle date picker with class 'datePickerField'
+          if (textArea.type === "date") {
+            valueOfFieldToUpdate = textArea.value; // Get the selected date in 'YYYY-MM-DD' format
+            console.log(`Date picker value selected: ${valueOfFieldToUpdate}`);
+
+            if (!valueOfFieldToUpdate) {
+              console.log("No date selected");
+              return; // If the date picker is empty, exit the function
+            }
+
+            // Format the date to 'mmm d, yyyy'
+            const formattedDate = formatDateToReadable(valueOfFieldToUpdate);
+            console.log(`Formatted Date: ${formattedDate}`);
+
+            // Call saveValueToCRM for date pickers with formatted date
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              fieldToUpdate,
+              formattedDate // Use the formatted date
+            );
+
+            // Additional logic if needed, like updating related fields for manual edits
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Manually_Edited_From_IC_Tool",
+              true
+            );
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Source_of_Manual_Update",
+              "IC TOOL WEBFLOW"
+            );
+            saveValueToCRM(
+              moduleToUpdate,
+              recordId,
+              "Date_of_Manual_Update",
+              formattedDate // Use the selected and formatted date
+            );
+          }
+
           // Handle textareas with the "crmValues" class
           if (textArea.classList.contains("crmValues")) {
             valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
@@ -2435,18 +2506,18 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           }
           // Handle textareas with the "crmObservationsComment" class
-          else if (textArea.classList.contains("crmObservationsComment")) {
-            console.log(
-              "Calling crmObservationsComment for text area with class crmObservationsComment"
-            );
+          // else if (textArea.classList.contains("crmObservationsComment")) {
+          //   console.log(
+          //     "Calling crmObservationsComment for text area with class crmObservationsComment"
+          //   );
 
-            saveValueToCRM(
-              moduleToUpdate,
-              recordId,
-              fieldToUpdate,
-              valueOfFieldToUpdate
-            );
-          }
+          //   saveValueToCRM(
+          //     moduleToUpdate,
+          //     recordId,
+          //     fieldToUpdate,
+          //     valueOfFieldToUpdate
+          //   );
+          // }
           // Handle dropdowns with the "dropDownKeyFeatures" class
           else if (textArea.classList.contains("dropDownKeyFeatures")) {
             valueOfFieldToUpdate = textArea.value; // Get the selected value of the dropdown
