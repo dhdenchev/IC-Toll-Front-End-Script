@@ -1662,12 +1662,12 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_1_Achieved_Price || "";
             //
-            document.getElementById(
-              "UW_Observation_Comparables_1_Link_To_Property"
-            ).value =
-              resultObj.creatorRecord[0]
-                .UW_Observation_Comparables_1_Link_To_Property || "";
-            //
+            // document.getElementById(
+            //   "UW_Observation_Comparables_1_Link_To_Property"
+            // ).value =
+            //   resultObj.creatorRecord[0]
+            //     .UW_Observation_Comparables_1_Link_To_Property || "";
+            // //
             //Comparable 1 Link
             const comparable1Link =
               resultObj.creatorRecord[0]
@@ -1702,11 +1702,22 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_2_Achieved_Price || "";
             //
-            document.getElementById(
-              "UW_Observation_Comparables_2_Link_To_Property"
-            ).value =
+            // document.getElementById(
+            //   "UW_Observation_Comparables_2_Link_To_Property"
+            // ).value =
+            //   resultObj.creatorRecord[0]
+            //     .UW_Observation_Comparables_2_Link_To_Property || "";
+            //Comparable 2 Link
+            const comparable2Link =
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_2_Link_To_Property || "";
+            initializeEditableLinkField(
+              comparable2Link,
+              "UW_Observation_Comparables_2_Link_To_Property",
+              "linkDisplayComparable2Link",
+              "editableLinkComparable2Link",
+              "editLinkButtonComparable2Link"
+            );
             //
             //Comparable 3
             document.getElementById("UW_Observation_Comparables_3").value =
@@ -1731,12 +1742,22 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_3_Achieved_Price || "";
             //
-            document.getElementById(
-              "UW_Observation_Comparables_3_Link_To_Property"
-            ).value =
+            // document.getElementById(
+            //   "UW_Observation_Comparables_3_Link_To_Property"
+            // ).value =
+            //   resultObj.creatorRecord[0]
+            //     .UW_Observation_Comparables_3_Link_To_Property || "";
+            //
+            const comparable3Link =
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_3_Link_To_Property || "";
-            //
+            initializeEditableLinkField(
+              comparable3Link,
+              "UW_Observation_Comparables_3_Link_To_Property",
+              "linkDisplayComparable3Link",
+              "editableLinkComparable3Link",
+              "editLinkButtonComparable3Link"
+            );
             //SET STARS RATING AVERAGE AND ANSWERED QUESTIONS FOR COMPARABLES MODULE
             if (
               resultObj.creatorRecord &&
