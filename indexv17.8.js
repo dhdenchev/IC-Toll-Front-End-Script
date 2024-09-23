@@ -1674,7 +1674,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .UW_Observation_Comparables_1_Link_To_Property || "";
             initializeEditableLinkField(
               comparable1Link,
-              "comparable_1_link",
+              "UW_Observation_Comparables_1_Link_To_Property",
               "linkDisplayComparable1Link",
               "editableLinkComparable1Link",
               "editLinkButtonComparable1Link"
