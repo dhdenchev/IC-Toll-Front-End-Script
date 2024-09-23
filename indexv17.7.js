@@ -1668,9 +1668,10 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_1_Link_To_Property || "";
             //
-            //Google Earth Link
-            // const comparable1Link =
-            //   resultObj.creatorRecord[0].UW_Observation_Comparables_1_Link_To_Property || "";
+            //Comparable 1 Link
+            const comparable1Link =
+              resultObj.creatorRecord[0]
+                .UW_Observation_Comparables_1_Link_To_Property || "";
             initializeEditableLinkField(
               comparable1Link,
               "comparable_1_link",
