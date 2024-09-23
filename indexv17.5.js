@@ -811,6 +811,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("propertyPostcode").textContent =
               resultObj.propertyPostcode || "-";
 
+            setDropdownValue("surveyType", resultObj.surveyType || "");
+
             setDropdownValue("propertyType", resultObj.propertyType || "");
 
             setDropdownValue("propertyStyle", resultObj.propertyStyle || "");
