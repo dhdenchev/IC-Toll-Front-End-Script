@@ -1668,6 +1668,16 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Comparables_1_Link_To_Property || "";
             //
+            //Google Earth Link
+            // const comparable1Link =
+            //   resultObj.creatorRecord[0].UW_Observation_Comparables_1_Link_To_Property || "";
+            initializeEditableLinkField(
+              comparable1Link,
+              "comparable_1_link",
+              "linkDisplayComparable1Link",
+              "editableLinkComparable1Link",
+              "editLinkButtonComparable1Link"
+            );
             //Comparable 2
             document.getElementById("UW_Observation_Comparables_2").value =
               resultObj.creatorRecord[0].UW_Observation_Comparables_2 || "";
@@ -2362,7 +2372,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function initializeTextAreas() {
       const textAreas = document.querySelectorAll(
-        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage, .dropDownKeyFeatures"
+        ".observationsComment, .linksComment, .comparablesComment, .shouldWeBuyAnswer, .dropDown, .crmValues, .crmValuesComment, .crmValuesFrontPage, .dropDownKeyFeatures, .dropDownKeyFeaturesHeading"
       );
 
       textAreas.forEach((textArea) => {
