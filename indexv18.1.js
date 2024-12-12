@@ -959,15 +959,9 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0].UW_Observation_Should_We_Buy_Prefix
             );
             //
-            //Referrer link
-            const Referrer = resultObj.creatorRecord[0].referrer || "";
-            initializeEditableLinkField(
-              Referrer,
-              "referrer",
-              "linkDisplayReferrer",
-              "editableLinkReferrer",
-              "editLinkButtonReferrer"
-            );
+            //Referrer
+            document.getElementById("Referrer").textContent =
+              "£" + formatNumber(resultObj.Referrer) || "-";
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
