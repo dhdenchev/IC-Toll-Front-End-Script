@@ -854,9 +854,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("Upstix_Assessed_Value").textContent =
               "£" + formatNumber(resultObj.uwValuation) || "-";
             document.getElementById("IC1_Proposed_Offer").textContent =
-              "£" + formatNumber(resultObj.uwOffer) || "-";
+              "£" + formatNumber(resultObj.uwOfferLower) || "-";
             document.getElementById("Proposed_Offer_Upper").textContent =
-              "£" + formatNumber(resultObj.uwOffer) || "-";
+              "£" + formatNumber(resultObj.uwOfferUpper) || "-";
             document.getElementById("180DayValuation").textContent =
               "£" + formatNumber(resultObj["180DayValuation"]) || "-";
 
