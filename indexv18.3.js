@@ -2429,7 +2429,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Handle textareas with the "crmValues" class
           if (textArea.classList.contains("crmValues")) {
-            valueOfFieldToUpdate = textArea.value.replace(/[£$,.]/g, "");
+            valueOfFieldToUpdate = textArea.value.replace(/[£$,]/g, "");
             console.log(
               "Calling saveValueToCRM for text area with class crmValues"
             );
