@@ -960,8 +960,10 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //
             //Referrer
+            //Approved By
             document.getElementById("Referrer").textContent =
-              "£" + formatNumber(resultObj.Referrer) || "-";
+              resultObj.Referrer || "";
+            //
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
