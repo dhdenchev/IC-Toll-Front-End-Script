@@ -863,7 +863,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //SHOULD WE BUY/Summary MODULE------------------------------------------------------------------------------------
             //
             document.getElementById("IC1_Proposed_Offer1").textContent =
-              "£" + formatNumber(resultObj.uwOffer) || "-";
+              "£" + formatNumber(resultObj.uwOffer) || "0";
             //
             //Update Should we buy/summary decision
 
