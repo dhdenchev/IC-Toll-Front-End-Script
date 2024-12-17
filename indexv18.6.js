@@ -878,6 +878,16 @@ document.addEventListener("DOMContentLoaded", function () {
               "UW_Observation_Should_We_Buy_Approved_By"
             ).textContent = resultObj.Approved_By || "";
             //
+            //Final Offer No Early Marketing
+            document.getElementById("Final_Offer_No_Early_Marketing").value =
+              resultObj.creatorRecord[0].Final_Offer_No_Early_Marketing || "";
+            document
+              .getElementById("Final_Offer_No_Early_Marketing")
+              .setAttribute(
+                "data-initial-rating",
+                resultObj.creatorRecord[0].Final_Offer_No_Early_Marketing
+              );
+            //
             //Gross Flip Margin
             document.getElementById(
               "UW_Observation_Should_We_Buy_Gross_Flip_Margin"
