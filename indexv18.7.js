@@ -881,12 +881,6 @@ document.addEventListener("DOMContentLoaded", function () {
             //Final Offer No Early Marketing
             document.getElementById("Final_Offer_No_Early_Marketing").value =
               resultObj.creatorRecord[0].Final_Offer_No_Early_Marketing || "";
-            document
-              .getElementById("Final_Offer_No_Early_Marketing")
-              .setAttribute(
-                "data-initial-rating",
-                resultObj.creatorRecord[0].Final_Offer_No_Early_Marketing
-              );
             //
             //Gross Flip Margin
             document.getElementById(
@@ -976,6 +970,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("Referrer").textContent =
               resultObj.Referrer || "";
             //
+            //Internal Notes For Resale/Sales
+            document.getElementById("Internal_Notes_For_Resale_Sales").value =
+              resultObj.creatorRecord[0].Internal_Notes_For_Resale_Sales || "";
             //------------------------------------------------------------------------------------
             //Comments and Stars ratings data
             //CONDITION -------------------------------------------------------------------------------------
