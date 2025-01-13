@@ -842,28 +842,28 @@ document.addEventListener("DOMContentLoaded", function () {
             setDropdownValue("propertyTenure", resultObj.tenure || "");
 
             document.getElementById("outraOfferRange").textContent =
-              formatOutraOfferRange(resultObj.OutraOfferRange) || "-";
+              formatOutraOfferRange(resultObj.OutraOfferRange) || "";
             //Outra Valuation
             document.getElementById("outraValuation").textContent =
-              "£" + formatNumber(resultObj.outraValuation) || "-";
+              "£" + formatNumber(resultObj.outraValuation) || "";
             //Indicative Valuation
             document.getElementById("Indicative_Valuation").textContent =
-              "£" + formatNumber(resultObj.Indicative_Valuation) || "-";
+              "£" + formatNumber(resultObj.Indicative_Valuation) || "";
             document.getElementById("Indicative_Offer_Lower").textContent =
-              "£" + formatNumber(resultObj.indicativeOffer) || "-";
+              "£" + formatNumber(resultObj.indicativeOffer) || "";
             document.getElementById("Upstix_Assessed_Value").textContent =
-              "£" + formatNumber(resultObj.uwValuation) || "-";
+              "£" + formatNumber(resultObj.uwValuation) || "";
             document.getElementById("IC1_Proposed_Offer").textContent =
-              "£" + formatNumber(resultObj.uwOfferLower) || "-";
+              "£" + formatNumber(resultObj.uwOfferLower) || "";
             document.getElementById("Proposed_Offer_Upper").textContent =
-              "£" + formatNumber(resultObj.uwOfferUpper) || "-";
+              "£" + formatNumber(resultObj.uwOfferUpper) || "";
             document.getElementById("180DayValuation").textContent =
-              "£" + formatNumber(resultObj["180DayValuation"]) || "-";
+              "£" + formatNumber(resultObj["180DayValuation"]) || "";
 
             //SHOULD WE BUY/Summary MODULE------------------------------------------------------------------------------------
             //
             document.getElementById("IC1_Proposed_Offer1").textContent =
-              "£" + formatNumber(resultObj.uwOffer) || "0";
+              "£" + formatNumber(resultObj.uwOfferLower) || "";
             //
             //Update Should we buy/summary decision
 
