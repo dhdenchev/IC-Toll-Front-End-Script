@@ -921,8 +921,8 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Profit Share Yes/No
             setDropdownValue(
-              "Profit_Share_Yes_No",
-              resultObj.Profit_Share_Yes_No
+              "Profit_Share1",
+              resultObj.Profit_Share1
             );
             //
             //Special Terms
