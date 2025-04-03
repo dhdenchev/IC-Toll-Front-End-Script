@@ -921,8 +921,8 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             //Profit Share Yes/No
             setDropdownValue(
-              "UW_Observation_Should_We_Buy_Profit_Share_Yes_No",
-              resultObj.UW_Observation_Should_We_Buy_Profit_Share_Yes_No
+              "Profit_Share_Yes_No",
+              resultObj.Profit_Share_Yes_No
             );
             //
             //Special Terms
