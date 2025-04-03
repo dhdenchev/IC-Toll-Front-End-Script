@@ -919,6 +919,12 @@ document.addEventListener("DOMContentLoaded", function () {
               resultObj.creatorRecord[0]
                 .UW_Observation_Should_We_Buy_No_SDLT_Why
             );
+            //Profit Share Yes/No
+            setDropdownValue(
+              "UW_Observation_Should_We_Buy_Profit_Share_Yes_No",
+              resultObj.creatorRecord[0]
+                .UW_Observation_Should_We_Buy_Profit_Share_Yes_No
+            );
             //
             //Special Terms
             document.getElementById(
